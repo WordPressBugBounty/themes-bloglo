@@ -1,0 +1,104 @@
+.bloglo-checkbox {
+  -js-display: flex;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 500;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 14px;
+  cursor: default;
+}
+.bloglo-checkbox input[type="checkbox"] {
+  position: relative;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  background: none;
+  clear: none;
+  cursor: pointer;
+  display: inline-block !important;
+  line-height: 0;
+  margin: 1px 0 0;
+  outline: 0;
+  padding: 0 !important;
+  text-align: center;
+  vertical-align: text-top;
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  opacity: 0.5;
+  transition: all 0.35s cubic-bezier(0.645, 0.045, 0.355, 1);
+  box-shadow: none;
+}
+.bloglo-checkbox input[type="checkbox"]:before {
+  position: absolute;
+  margin: 0;
+  content: "";
+  opacity: 0;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  z-index: 2;
+  transition: all 0.35s cubic-bezier(0.645, 0.045, 0.355, 1);
+  box-sizing: border-box;
+}
+.bloglo-checkbox input[type="checkbox"]:disabled:not(:checked) {
+  border-color: currentColor !important;
+  opacity: 0.65 !important;
+  pointer-events: none;
+}
+.bloglo-checkbox input[type="checkbox"]:disabled:not(:checked) + .bloglo-label {
+  opacity: 0.65;
+  pointer-events: none;
+}
+.bloglo-checkbox input[type="checkbox"]:checked {
+  border-color: #0085ba;
+  background-color: #0085ba;
+  opacity: 1;
+}
+.bloglo-checkbox input[type="checkbox"]:checked:before {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+.bloglo-checkbox input[type="checkbox"]:checked:disabled {
+  opacity: 0.65;
+  pointer-events: none;
+  border-color: #0085ba;
+}
+.bloglo-checkbox input[type="checkbox"]:checked:disabled + .bloglo-label {
+  pointer-events: none;
+}
+.bloglo-checkbox .bloglo-label {
+  -js-display: flex;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  padding-left: 11px;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+.bloglo-checkbox .bloglo-label .bloglo-info-icon {
+  margin-left: auto;
+  position: relative !important;
+}
+.bloglo-checkbox .bloglo-label .bloglo-info-icon .bloglo-tooltip {
+  left: auto !important;
+  right: -7px !important;
+}
+.bloglo-checkbox .bloglo-label .bloglo-info-icon .bloglo-tooltip:after {
+  left: auto !important;
+  right: 12px !important;
+}
+.bloglo-checkbox:hover input[type="checkbox"] {
+  border-color: #0085ba;
+  opacity: 1;
+}

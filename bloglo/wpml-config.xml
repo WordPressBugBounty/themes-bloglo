@@ -1,0 +1,22 @@
+<wpml-config>
+    <admin-texts>
+        <key name="theme_mods_bloglo">
+            <key name="bloglo_ticker_title" />
+            <key name="bloglo_featured_links_title" />
+            <key name="bloglo_pyml_title" />
+            <key name="bloglo_main_nav_mobile_label" />
+            <key name="bloglo_excerpt_more" />
+            <key name="bloglo_pre_footer_cta_text" />
+            <key name="bloglo_pre_footer_cta_btn_text" />
+            <key name="bloglo_header_widgets">
+                <key name="*" />
+            </key>
+            <key name="bloglo_copyright_widgets" >
+                <key name="*" />
+            </key>
+            <key name='custom_logo' />
+            <key name='bloglo_logo_default_retina' />
+            <key name='blogname' />
+        </key>
+    </admin-texts>   
+</wpml-config>

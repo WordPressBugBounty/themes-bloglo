@@ -1,0 +1,20 @@
+.bloglo-button-wrapper {
+  -js-display: flex;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.bloglo-button-wrapper .bloglo-control-heading {
+  margin-right: auto;
+}
+.bloglo-button-wrapper .button {
+  padding-left: 10px;
+  box-sizing: border-box;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.bloglo-button-wrapper .customize-control-title {
+  margin-bottom: 0;
+}

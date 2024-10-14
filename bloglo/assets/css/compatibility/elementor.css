@@ -1,0 +1,118 @@
+/* ==========================================================================
+*  Elementor styles.
+*  ========================================================================== */
+.bloglo-layout__boxed-separated.bloglo-sidebar-style-3
+  .elementor-widget-sidebar
+  .bloglo-widget {
+  border-radius: 3px;
+  border: 1px solid rgba(190, 190, 190, 0.3);
+}
+
+/*****************************************/
+/* Responsive styles.
+/*****************************************/
+/* 
+  ##Device = Most of the smartphones (portrait)
+  ##Screen = 480px and under.
+*/
+/* 
+  ##Device = Most of the tablets (portrait)
+  ##Screen = Between 481px and 768px.
+*/
+/* 
+  ##Device = Most of the tablets and smartphones
+  ##Screen = 768px and under.
+*/
+/* 
+  ##Device = Desktops and landscape tablets
+  ##Screen = 769px and upper.
+*/
+/* 
+  ##Device = Large desktops and upper (incl. iPad Pro in landscape mode)
+  ##Screen = 1281px and upper.
+*/
+.elementor-text-editor > *:first-child {
+  margin-top: 0;
+}
+
+.elementor-text-editor > *:last-child {
+  margin-bottom: 0;
+}
+
+.bloglo-sidebar-style-2 .elementor-widget-sidebar .widget-title {
+  padding-left: 1rem;
+}
+
+.bloglo-sidebar-style-2 .elementor-widget-sidebar .widget-title:before {
+  content: "";
+  position: absolute;
+  top: 16%;
+  left: 0;
+  display: inline-block;
+  width: 3px;
+  height: 70%;
+}
+
+.bloglo-sidebar-style-2 .elementor-widget-sidebar .widget-title:after,
+.bloglo-sidebar-style-3 .elementor-widget-sidebar .widget-title:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(190, 190, 190, 0.3);
+  margin-left: 1.25rem;
+  -webkit-transform-style: preserve-3d;
+}
+
+.bloglo-sidebar-style-3 .elementor-widget-sidebar .bloglo-widget {
+  border: solid 1px rgba(190, 190, 190, 0.3);
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding: 25px;
+}
+
+.bloglo-sidebar-style-3 .elementor-widget-sidebar .bloglo-widget:last-child {
+  margin-bottom: 0;
+}
+
+.bloglo-sidebar-style-3 .elementor-widget-sidebar .widget-title {
+  border-left-style: solid;
+  border-left-width: 2px;
+  margin-left: -26px;
+  padding-left: 22px;
+}
+
+.bloglo-layout__boxed-separated.bloglo-sidebar-style-3
+  .elementor-widget-sidebar
+  .bloglo-widget {
+  margin-bottom: 20px;
+}
+
+.bloglo-layout__boxed-separated.bloglo-sidebar-style-3
+  .elementor-widget-sidebar
+  .bloglo-widget.widget_media_image {
+  padding: 0;
+  overflow: hidden;
+}
+
+.bloglo-layout__boxed-separated.bloglo-sidebar-style-3
+  .elementor-widget-sidebar
+  .widget_media_image
+  .widget-title {
+  padding-left: 25px;
+  margin-left: 0;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 960px) {
+  .bloglo-layout__boxed-separated.bloglo-sidebar-style-3
+    .elementor-widget-sidebar
+    .bloglo-widget {
+    background: none !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    margin-bottom: 40px;
+  }
+}

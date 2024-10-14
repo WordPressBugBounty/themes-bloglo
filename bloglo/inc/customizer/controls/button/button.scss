@@ -1,0 +1,23 @@
+/*****************************************/
+/* Customizer button control style
+/*****************************************/
+
+.bloglo-button-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+
+  .bloglo-control-heading {
+    margin-right: auto;
+  }
+
+  .button {
+    padding-left: 10px;
+    box-sizing: border-box;
+    align-items: center;
+  }
+
+  .customize-control-title {
+    margin-bottom: 0;
+  }
+}

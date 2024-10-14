@@ -1,0 +1,70 @@
+#accordion-section-bloglo_section_bloglo_pro h3.accordion-section-title {
+  background: #004bed;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+#customize-controls
+  #accordion-section-bloglo_section_bloglo_pro
+  .accordion-section-title:focus,
+#customize-controls
+  #accordion-section-bloglo_section_bloglo_pro
+  .accordion-section-title:hover,
+#customize-controls
+  #accordion-section-bloglo_section_bloglo_pro.open
+  .accordion-section-title,
+#customize-controls
+  #accordion-section-bloglo_section_bloglo_pro:hover
+  > .accordion-section-title {
+  background: #004bed;
+  color: #fff;
+}
+#customize-theme-controls
+  #accordion-section-bloglo_section_bloglo_pro
+  .accordion-section-title:after {
+  color: #fff;
+}
+.btn-lg,
+.btn-group-lg > .btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+.upsell-btn > .btn-success {
+  color: #fff;
+  background-color: #004bed;
+  border-color: #004bed;
+}
+.upsell-btn > .btn-success:hover {
+  color: #fff;
+  background-color: #736de0;
+  border-color: #004bed;
+}
+.upsell-btn {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.upsell-btn-bottom {
+  margin-top: 20px;
+}
+.upsell-btn > a {
+  text-decoration: none;
+}
+.upsell-btn > a.btn.btn-success.btn {
+  padding: 10px;
+  border-radius: 0;
+}
+#accordion-section-bloglo_section_bloglo_pro .accordion-section-title::before {
+  content: "\f487";
+  font-family: dashicons;
+  font-size: 14px;
+  margin-right: 8px;
+  color: red;
+  background-color: #fff;
+  border-radius: 100%;
+  width: 22px;
+  height: 22px;
+  line-height: 23px;
+  text-align: center;
+}

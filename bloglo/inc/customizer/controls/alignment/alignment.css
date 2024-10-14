@@ -1,0 +1,168 @@
+/*****************************************/
+/* Customizer control color style
+/*****************************************/
+/**
+ * Import configuration file with variables.
+ */
+.bloglo-alignment-control,
+.background-position-control {
+  margin-top: 12px;
+}
+
+.bloglo-alignment-control input[type="radio"]:checked ~ .button,
+.background-position-control input[type="radio"]:checked ~ .button {
+  background: #0071a1;
+  border-color: #0071a1;
+  z-index: 1;
+  color: #fff !important;
+}
+
+.bloglo-alignment-control
+  input[type="radio"]:checked
+  ~ .button
+  .alignment-position-center-icon:before,
+.bloglo-alignment-control
+  input[type="radio"]:checked
+  ~ .button
+  .background-position-center-icon:before,
+.background-position-control
+  input[type="radio"]:checked
+  ~ .button
+  .alignment-position-center-icon:before,
+.background-position-control
+  input[type="radio"]:checked
+  ~ .button
+  .background-position-center-icon:before {
+  background-color: #fff !important;
+}
+
+.bloglo-alignment-control input[type="radio"]:focus ~ .button,
+.background-position-control input[type="radio"]:focus ~ .button {
+  border-color: #5b9dd9;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  color: #232323;
+}
+
+.bloglo-alignment-control .alignment-position-center-icon,
+.bloglo-alignment-control .alignment-position-center-icon:before {
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  -webkit-transition: background-color 0.1s ease-in;
+  transition: background-color 0.1s ease-in;
+}
+
+.bloglo-alignment-control .alignment-position-center-icon {
+  height: 20px;
+  margin-top: 13px;
+  vertical-align: top;
+  width: 20px;
+}
+
+.bloglo-alignment-control .alignment-position-center-icon:before {
+  background-color: #555;
+  border-radius: 50%;
+  content: "";
+  height: 12px;
+  width: 12px;
+}
+
+.bloglo-alignment-control .button:hover .alignment-position-center-icon:before,
+.bloglo-alignment-control
+  input[type="radio"]:focus
+  ~ .button
+  .alignment-position-center-icon:before {
+  background-color: #232323;
+}
+
+.bloglo-alignment-control .button-group {
+  display: block;
+}
+
+.bloglo-alignment-control .button-group.disabled {
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.bloglo-alignment-control .button-group .button {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  /* Following properties are overridden by buttons responsive styles (see: wp-includes/css/buttons.css). */
+  height: 40px !important;
+  line-height: 2.9 !important;
+  margin: 0 -1px 0 0 !important;
+  padding: 0 10px 1px !important;
+  position: relative;
+}
+
+.bloglo-alignment-control .button-group .button:active,
+.bloglo-alignment-control .button-group .button:hover,
+.bloglo-alignment-control .button-group .button:focus {
+  z-index: 1;
+}
+
+.bloglo-alignment-control .button-group .dashicons {
+  margin-top: 9px;
+}
+
+.bloglo-alignment-control .button-group > label {
+  margin: 0 !important;
+}
+
+.bloglo-alignment-control .button-group > label.disabled {
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.bloglo-alignment-control .button-group.bloglo-top .bloglo-left .dashicons {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.bloglo-alignment-control .button-group.bloglo-top .bloglo-right .dashicons {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.bloglo-alignment-control .button-group.bloglo-bottom .bloglo-left .dashicons {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.bloglo-alignment-control .button-group.bloglo-bottom .bloglo-right .dashicons {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.bloglo-alignment-control
+  .button-group:first-child
+  > label:first-child
+  .button {
+  border-top-left-radius: 3px;
+}
+
+.bloglo-alignment-control .button-group:first-child > label:last-child .button {
+  border-top-right-radius: 3px;
+}
+
+.bloglo-alignment-control .button-group:last-child > label:first-child .button {
+  border-bottom-left-radius: 3px;
+}
+
+.bloglo-alignment-control .button-group:last-child > label:last-child .button {
+  border-bottom-right-radius: 3px;
+}
+
+.bloglo-alignment-control .button-group + .button-group {
+  margin-top: -1px;
+}
+
+.bloglo-alignment-control .button-group > label input[type="radio"] {
+  opacity: 0;
+}

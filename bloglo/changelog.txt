@@ -1,0 +1,118 @@
+= 1.1.15 =
+* Added svg icons.
+* Improve time script.
+* Fixed custom meta checkbox style issue.
+
+= 1.1.14 =
+* Allowed time tag in wp_kses.
+
+= 1.1.13 =
+* Fixed 'screen-reader-text' style.
+* Fixed darkmode issue.
+
+= 1.1.12 =
+* Fixed classic editor embed video style issue.
+* Fixed list style issue.
+
+= 1.1.11 =
+* Fixed style issues.
+* Added social icon.
+
+= 1.1.10 =
+* Fixed dark mode issue when enabled from customizer.
+* Post format quote: Dark mode issue fixed.
+
+= 1.1.9 =
+* Fixed ad block issue for header banner.
+
+= 1.1.8 =
+* Fixed some block editor style issues.
+* FIxed PYML issue on custom homepage.
+
+= 1.1.7 =
+* Fixed some dynamic style issues.
+
+= 1.1.6 =
+* Added WeChat, QQ, Bilibili, Threads social icons.
+
+= 1.1.5 =
+* Added Telegram and Discord social icons.
+
+= 1.1.4 =
+* Data escaping issue fixed.
+
+= 1.1.3 =
+* Post format gallery issue fixed.
+* Styling issues fixed and improvments.
+
+= 1.1.2 =
+* Fixed style issue.
+
+= 1.1.1 =
+* Tiktok social icon color change.
+* Single post typography issue fixed.
+
+= 1.1.0 =
+* Featured Links!, New Feature added.
+* Style issues fixed and improvments.
+
+= 1.0.15 =
+* PYML meta style changed.
+
+= 1.0.14 =
+* Style.min.css issue fixed.
+
+= 1.0.13 =
+* Minor issue fixed.
+* Screenshot update.
+
+= 1.0.12 =
+* Limit the number of categories to be shown.
+
+= 1.0.11 =
+* Added new dynamic rgba color in preview js :root
+* Link to documentation added in customizer.
+
+= 1.0.10 =
+* Image not showing up in 'Ticker' and 'Post you might like section' when optimizing image with Jetpack plugin. Fixed!
+
+= 1.0.9 =
+* Added new dynamic rgba color in :root.
+
+= 1.0.8 =
+* Screenshot update.
+* Header button border issue fixed when user change Accent color.
+* View pro features section added in customizer.
+
+= 1.0.7 =
+* Ticker stop sliding in customizer preview when user show/hide Post Element in styles tab. Fixed!
+
+= 1.0.6 =
+* Header required condition fixed.
+* Hester Core plugin support added.
+* Theme URI updated.
+
+= 1.0.5 =
+* Removed install free plugin and pre-built demo import card from Theme optons.
+
+= 1.0.4 =
+* Removed non-functional components.
+
+= 1.0.5 =
+* Removed install free plugin and pre-built demo import card from Theme optons.
+
+= 1.0.4 =
+* Removed non-functional components.
+
+= 1.0.3 =
+* Skip to content accessibility issue fixed.
+
+= 1.0.2 =
+* esc_html_e missing text domain issue fixed.
+
+= 1.0.1 =
+* Accessibility issue fixed.
+* kses_post depricated issue fixed.
+
+= 1.0.0 =
+* Initial release 🚀

@@ -1,0 +1,18 @@
+.bloglo-design-options-wrapper
+  .background-color-overlay
+  .wp-color-result.button {
+  top: 1.33em !important;
+}
+.bloglo-design-options-wrapper .bloglo-design-options-heading {
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+.bloglo-design-options-wrapper .bloglo-range-suffix {
+  margin-left: 6px;
+}
+.bloglo-design-options-wrapper .reset-defaults {
+  display: none;
+}
+.bloglo-design-options-wrapper .reset-defaults.active {
+  display: block;
+}

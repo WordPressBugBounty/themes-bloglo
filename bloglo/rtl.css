@@ -1,0 +1,232 @@
+/*****************************************/
+/* Right-to-left language support
+ * https://codex.wordpress.org/Right-to-Left_Language_Support
+/*****************************************/
+body {
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+.bloglo-hover-slider .slide-inner .post-category,
+th {
+  text-align: right;
+}
+
+.screen-reader-text:focus {
+  left: auto;
+  right: 5px;
+}
+
+.rtl #bloglo-topbar .bloglo-topbar-widget__text .bloglo-icon {
+  margin: 0 0 0 0.7rem;
+}
+
+.rtl.bloglo-header-layout-4 .bloglo-logo-container .bloglo-logo {
+  margin-left: auto;
+  margin-right: unset;
+}
+
+.rtl.bloglo-header-layout-4 #bloglo-header-inner .bloglo-nav > ul > li,
+.rtl.bloglo-header-layout-4 #bloglo-header-inner .bloglo-nav > ul > li:first-child {
+  margin-left: 1.6rem !important;
+}
+
+.rtl.bloglo-header-layout-4 #bloglo-header-inner .bloglo-nav > ul > li:last-child {
+  margin-left: 0 !important;
+}
+
+.rtl .bloglo-social-nav.rounded>ul>li>a {
+  margin-right: 0.8rem;
+}
+
+.rtl .bloglo-social-nav.rounded>ul>li:first-child>a {
+  margin-right: 0;
+}
+
+.rtl .bloglo-header-element > .bloglo-header-widget:first-child {
+  margin-left: 0;
+}
+
+.rtl .bloglo-header-element > .bloglo-header-widget.bloglo-header-widget__image {
+  padding-left: 0;
+}
+
+.rtl.bloglo-header-layout-4 .bloglo-header-widgets .bloglo-header-widget.bloglo-header-widget__button {
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+
+.rtl.bloglo-header-layout-4 .bloglo-nav-container .bloglo-widget-location-right .bloglo-header-widget:last-of-type {
+  padding-left: 0;
+}
+
+.rtl .ticker-slider-items .ticker-title::after {
+  top: 30%;
+  right: unset;
+  left: -0.9rem;
+  transform: rotate(180deg);
+}
+
+.rtl .author-avatar img {
+  margin-left: 0.8rem;
+  margin-right: 0;
+}
+
+.rtl .bloglo-hover-slider .entry-meta .entry-meta-elements>span:first-child {
+  padding-right: 0 !important;
+  padding-left: 1.1rem !important;
+}
+
+.rtl .bloglo-hover-slider .slide-inner .read-more {
+  left: unset;
+  right: 0;
+}
+
+.rtl.bloglo-layout__boxed-separated.bloglo-sidebar-position__right-sidebar.bloglo-sidebar-style-3 #primary {
+  padding-right: 0;
+  padding-left: 3.5rem;
+}
+
+.rtl.bloglo-blog-horizontal .bloglo-article:not(.format-quote) .bloglo-blog-entry-wrapper.bloglo-thumb-left .entry-media {
+  margin-right: 0;
+  margin-left: 3rem;
+}
+
+.rtl.bloglo-blog-horizontal .bloglo-article:not(.format-quote) .bloglo-blog-entry-wrapper.bloglo-thumb-right .entry-media {
+  margin-right: 3rem;
+  margin-left: 0;
+}
+
+@media screen and (max-width: 768px) {
+.rtl.bloglo-blog-horizontal .bloglo-article:not(.format-quote) .bloglo-blog-entry-wrapper.bloglo-thumb-left .entry-media,
+.rtl.bloglo-blog-horizontal .bloglo-article:not(.format-quote) .bloglo-blog-entry-wrapper.bloglo-thumb-right .entry-media {
+    margin: 0 0 2.128em;
+}
+}
+
+.rtl .entry-meta .bloglo-icon {
+  margin-left: 0.7rem;
+  margin-right: 0;
+}
+
+.rtl .entry-meta .entry-meta-elements>span:last-child {
+  margin-right: 1.1rem;
+  padding-right: 1.1rem;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.rtl .entry-meta .entry-meta-elements>span:before {
+  right: -1.1rem;
+}
+
+.rtl.bloglo-blog-masonry .bloglo-article .entry-meta span:first-child,
+.rtl.bloglo-blog-horizontal .bloglo-article .entry-meta .entry-meta-elements > span:first-child,
+.rtl.bloglo-blog-layout-1 .bloglo-article .entry-meta span:first-child {
+  padding-left: 0.5rem !important;
+  padding-right: 0 !important;
+}
+
+.rtl.rtl.bloglo-sidebar-style-3 #pyml .pyml-slider-items .widget-title::before {
+  right: 2rem;
+}
+
+.rtl.bloglo-sidebar-style-3 #pyml .pyml-slider-items .widget-title::after {
+  right: 9rem;
+}
+
+.rtl #pyml .pyml-button-buttons {
+  flex-direction: row-reverse;
+}
+
+@media only screen and (min-width: 783px) {
+  .rtl .site .bloglo-flex-row.start-md, .site .bloglo-flex-row .start-md {
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+      text-align: right;
+  }
+
+  .rtl .site .bloglo-flex-row.end-md, .site .bloglo-flex-row .end-md {
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      text-align: left;
+  }
+}
+
+.rtl .hester-posts-list-widget-init-s1 .hester-posts-list-widget-thumb {
+  margin-right: 0;
+  margin-left: 1.8rem;
+}
+
+.rtl .hester-posts-list-widget-categories .bloglo-icon,
+.rtl .hester-posts-list-widget-meta .bloglo-icon,
+.rtl .hester-posts-list-widget-categories .hester-icon,
+.rtl .hester-posts-list-widget-meta .hester-icon {
+  margin-right: 0;
+  margin-left: 0.6rem;
+}
+
+.rtl.is-footer-heading-init-s1 #bloglo-footer .wp-block-heading::before,
+.rtl.is-footer-heading-init-s1 #bloglo-footer .widget-title::before,
+.rtl.is-section-heading-init-s1 .comments-title::before {
+  right: 0;
+  left: 0;
+}
+
+.rtl.is-footer-heading-init-s1 #bloglo-footer .wp-block-heading::after,
+.rtl.is-footer-heading-init-s1 #bloglo-footer .widget-title::after,
+.rtl.is-section-heading-init-s1 .comments-title::after {
+  right: 7rem;
+  left: 0;
+}
+
+.rtl.bloglo-sidebar-style-3 .pyml-slider-items .widget-title::before,
+.rtl.bloglo-sidebar-style-3 #secondary .wp-block-search .wp-block-search__label::before,
+.rtl.bloglo-sidebar-style-3 #secondary .wp-block-heading::before,
+.rtl.bloglo-sidebar-style-3 #secondary .widget-title::before {
+  right: 2.5rem;
+  left: 0;
+}
+
+.rtl.bloglo-sidebar-style-3 .pyml-slider-items .widget-title::after,
+.rtl.bloglo-sidebar-style-3 #secondary .wp-block-search .wp-block-search__label::after,
+.rtl.bloglo-sidebar-style-3 #secondary .wp-block-heading::after,
+.rtl.bloglo-sidebar-style-3 #secondary .widget-title::after {
+  right: 9.5rem;
+  left: 0;
+}
+
+.rtl .widget.widget_block ul:not(.submenu-container,.wp-block-social-links,.wp-block-latest-posts__list) > li > a:hover::before,
+.rtl.using-keyboard .widget.widget_block ul:not(.submenu-container,.wp-block-social-links,.wp-block-latest-posts__list) > li > a:focus::before,
+.rtl .widget.widget_archive ul:not(.children) > li > a:hover::before,
+.rtl.using-keyboard .widget.widget_archive ul:not(.children) > li > a:focus::before,
+.rtl .widget.widget_categories ul:not(.children) > li > a:hover::before,
+.rtl.using-keyboard .widget.widget_categories ul:not(.children) > li > a:focus::before,
+.rtl .widget.widget.widget_pages ul:not(.sub-menu) > li > a:hover::before,
+.rtl.using-keyboard .widget.widget.widget_pages ul:not(.sub-menu) > li > a:focus::before,
+.rtl .widget.widget_nav_menu ul:not(.sub-menu) > li > a:hover::before,
+.rtl.using-keyboard .widget.widget_nav_menu ul:not(.sub-menu) > li > a:focus::before {
+  margin-right: 0;
+  margin-left: 1.2rem;
+}
+
+.rtl .bloglo-nav .menu-item-has-children>a>.bloglo-icon,
+.rtl .bloglo-nav .page_item_has_children>a>.bloglo-icon {
+  margin-left: 0;
+  margin-right: 0.4rem;
+}
+
+.rtl .bloglo-layout__boxed-separated.bloglo-sidebar-position__left-sidebar.bloglo-sidebar-style-3 #primary {
+  padding-left: 0;
+  padding-right: 3.5rem;
+}
+
+.rtl .bloglo-hover-slider .hover-slider-items > div {
+  border-right: 0;
+}
+
+.rtl .bloglo-hover-slider .hover-slider-items > div:not(:last-child) {
+  border-left: .1rem solid rgba(255,255,255,0.2);
+}
