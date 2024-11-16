@@ -93,6 +93,13 @@ if ( ! class_exists( 'Bloglo_Customizer_Widget' ) ) :
 		 */
 		public $styles;
 
+        /**
+         * Sizes
+         * Since 1.1.10
+         * @var array
+         */
+        public $sizes;
+
 		/**
 		 * Unique ID number of the current instance.
 		 *

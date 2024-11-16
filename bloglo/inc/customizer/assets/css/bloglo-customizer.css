@@ -8,6 +8,17 @@
   margin-top: -4px;
 }
 
+#customize-theme-controls .accordion-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#accordion-section-bloglo_section_upsell_button h3.accordion-section-title::after,
+#accordion-section-bloglo_section_docs_button h3.accordion-section-title::after {
+    display: none;
+}
+
 input[type="checkbox"],
 input[type="radio"] {
   height: 1.6rem;
