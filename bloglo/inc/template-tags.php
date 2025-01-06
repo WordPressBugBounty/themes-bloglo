@@ -117,6 +117,7 @@ if ( ! function_exists( 'bloglo_logo' ) ) :
 		$site_title               = bloglo_get_site_title();
 		$site_url                 = bloglo_get_site_url();
 
+		$site_logo_output		 = '';
 		$site_title_output       = '';
 		$site_description_output = '';
 
@@ -128,53 +129,57 @@ if ( ! function_exists( 'bloglo_logo' ) ) :
 			$retina_logo = bloglo_option( 'logo_default_retina' );
 			$retina_logo = isset( $retina_logo['background-image-id'] ) ? $retina_logo['background-image-id'] : false;
 
-			$site_title_output = bloglo_get_logo_img_output( $default_logo, $retina_logo );
+			$site_logo_output = bloglo_get_logo_img_output( $default_logo, $retina_logo );
 
 			// Allow logo output to be filtered.
-			$site_title_output = apply_filters( 'bloglo_logo_img_output', $site_title_output );
-		} else {
-
-			// Set tag to H1 for home page, span for other pages.
-			$site_title_tag = is_home() || is_front_page() ? 'h1' : 'span';
-			$site_title_tag = apply_filters( 'bloglo_site_title_tag', $site_title_tag );
-
-			// Site Title HTML markup.
-			$site_title_output = apply_filters(
-				'bloglo_site_title_markup',
-				sprintf(
-					'<%1$s class="site-title"%4$s>
-						<a href="%2$s" rel="home"%5$s>
-							%3$s
-						</a>
-					</%1$s>',
-					tag_escape( $site_title_tag ),
-					esc_url( $site_url ),
-					esc_html( $site_title ),
-					bloglo_get_schema_markup( 'name' ),
-					bloglo_get_schema_markup( 'url' )
-				)
-			);
+			$site_logo_output = apply_filters( 'bloglo_logo_img_output', $site_logo_output );
 		}
 
-		// Output site description if enabled in Customizer.
-		if ( $display_site_description ) {
+		// Set tag to H1 for home page, span for other pages.
+		$site_title_tag = is_home() || is_front_page() ? 'h1' : 'span';
+		$site_title_tag = apply_filters( 'bloglo_site_title_tag', $site_title_tag );
 
+		$class = $site_logo_output ? ' screen-reader-text' : '';
+		// Site Title HTML markup.
+		$site_title_output = apply_filters(
+			'bloglo_site_title_markup',
+			sprintf(
+				'<%1$s class="site-title%6$s"%4$s>
+					<a href="%2$s" rel="home"%5$s>
+						%3$s
+					</a>
+				</%1$s>',
+				tag_escape( $site_title_tag ),
+				esc_url( $site_url ),
+				esc_html( $site_title ),
+				bloglo_get_schema_markup( 'name' ),
+				bloglo_get_schema_markup( 'url' ),
+				esc_attr($class)
+			)
+		);
+		
+
+		// Output site description if enabled in Customizer.
+		$class = !$display_site_description ? ' screen-reader-text' : '';
+		if( bloglo_get_site_description() ) {
 			$site_description_output = apply_filters(
 				'bloglo_site_description_markup',
 				sprintf(
-					'<p class="site-description"%2$s>
+					'<p class="site-description%3$s"%2$s>
 						%1$s
 					</p>',
 					esc_html( bloglo_get_site_description() ),
-					bloglo_get_schema_markup( 'description' )
+					bloglo_get_schema_markup( 'description' ),
+					esc_attr($class)
 				)
 			);
 		}
+		
 
-		$site_title_output = '<div class="logo-inner">' . $site_title_output . $site_description_output . '</div>';
+		$output = '<div class="logo-inner">' . $site_logo_output . $site_title_output . $site_description_output . '</div>';
 
 		// Allow output to be filtered.
-		$output = apply_filters( 'bloglo_logo_output', $site_title_output );
+		$output = apply_filters( 'bloglo_logo_output', $output );
 
 		// Echo or return the output.
 		if ( $echo ) {
