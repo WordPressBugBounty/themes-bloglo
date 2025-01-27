@@ -3491,6 +3491,18 @@ input:-webkit-autofill {
     color: #6364ff;
 }
 
+.bloglo-social-nav.minimal-fill>ul>li>a>span.bluesky {
+    color: #1185fe;
+}
+
+.bloglo-social-nav.minimal-fill>ul>li>a>span.gemspace {
+    color: #FF4545;
+}
+
+.bloglo-social-nav.minimal-fill>ul>li>a>span.lifegroupchat {
+    color: #E76F0E;
+}
+
 .bloglo-social-nav.rounded-fill>ul>li>a>span:not(.screen-reader-text) {
     margin-right: 0.8rem;
     border-radius: 50%;
@@ -3600,6 +3612,18 @@ input:-webkit-autofill {
 
 .bloglo-social-nav.rounded-fill>ul>li>a>span.mastodon {
     background-color: #6364ff;
+}
+
+.bloglo-social-nav.rounded-fill>ul>li>a>span.bluesky {
+    background-color: #1185fe;
+}
+
+.bloglo-social-nav.rounded-fill>ul>li>a>span.gemspace {
+    background-color: #FF4545;
+}
+
+.bloglo-social-nav.rounded-fill>ul>li>a>span.lifegroupchat {
+    background-color: #E76F0E;
 }
 
 /*****************************************/
