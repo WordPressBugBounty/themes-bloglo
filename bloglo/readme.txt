@@ -2,11 +2,11 @@
 Contributors: Peregrinethemes
 Tags: two-columns, right-sidebar, left-sidebar, footer-widgets, blog, news, entertainment, custom-background, custom-menu, custom-logo, post-formats, sticky-post, editor-style, threaded-comments, translation-ready, custom-colors, featured-images, full-width-template, microformats, theme-options, e-commerce, front-page-posting, flexible-header, wide-blocks
 Requires at least: 5.4
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.1.18
+Stable tag: 1.1.19
 
 A lightweight and highly customizable multi-purpose theme that makes it easy for anyone to create their perfect website.
 
@@ -28,6 +28,9 @@ Bloglo WordPress Theme, Copyright (c) 2023, Peregrinethemes
 Bloglo is distributed under the terms of the GNU GPLs
 
 == Changelog ==
+
+= 1.0.19 =
+* WooCommerce 9.7.0 templates updated.
 
 = 1.0.18 =
 * WooCommerce 9.6.0 templates updated.
