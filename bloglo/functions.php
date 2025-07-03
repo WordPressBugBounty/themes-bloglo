@@ -67,7 +67,7 @@ final class Bloglo {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $version = '1.1.19';
+	public $version = '1.1.20';
 	/**
 	 * Main Bloglo Instance.
 	 *

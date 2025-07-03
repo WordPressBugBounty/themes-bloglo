@@ -396,7 +396,7 @@ if ( ! class_exists( 'Bloglo_Customizer_WooCommerce' ) ) :
 				),
 			);
 
-			$options['setting'] = hester_array_insert( $options['setting'], $sidebar_options, 'bloglo_archive_sidebar_position' );
+			$options['setting'] = bloglo_array_insert( $options['setting'], $sidebar_options, 'bloglo_archive_sidebar_position' );
 
 			return $options;
 		}

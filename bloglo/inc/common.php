@@ -1061,7 +1061,7 @@ endif;
  * @param string $position  Before or after $key.
  * @return array $result    Array with inserted $new value.
  */
-function hester_array_insert( $array, $pairs, $key, $position = 'after' ) {
+function bloglo_array_insert( $array, $pairs, $key, $position = 'after' ) {
 
 	$key_pos = array_search( $key, array_keys( $array ), true );
 

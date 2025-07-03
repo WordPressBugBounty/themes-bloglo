@@ -1,7 +1,11 @@
-= 1.0.19 =
+= 1.1.20 =
+* WooCommerce 9.9.0 templates updated.
+* Minor issues fixed.
+
+= 1.1.19 =
 * WooCommerce 9.7.0 templates updated.
 
-= 1.0.18 =
+= 1.1.18 =
 * WooCommerce 9.6.0 templates updated.
 * New social media icons for header added: BlueSky, GemSpace, LifeGroupChat
 

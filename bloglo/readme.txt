@@ -6,7 +6,7 @@ Tested up to: 6.8
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.1.19
+Stable tag: 1.1.20
 
 A lightweight and highly customizable multi-purpose theme that makes it easy for anyone to create their perfect website.
 
@@ -29,10 +29,14 @@ Bloglo is distributed under the terms of the GNU GPLs
 
 == Changelog ==
 
-= 1.0.19 =
+= 1.1.20 =
+* WooCommerce 9.9.0 templates updated.
+* Minor issues fixed.
+
+= 1.1.19 =
 * WooCommerce 9.7.0 templates updated.
 
-= 1.0.18 =
+= 1.1.18 =
 * WooCommerce 9.6.0 templates updated.
 * New social media icons for header added: BlueSky, GemSpace, LifeGroupChat
 
