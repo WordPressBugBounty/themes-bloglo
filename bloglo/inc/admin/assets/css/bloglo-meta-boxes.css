@@ -1,6 +1,16 @@
 /* ==========================================================================
 *  Bloglo Meta Box Styles.
 *  ========================================================================== */
+.postbox .bloglo-meta-box-field .bloglo-checkbox-row {
+    --checkbox-input-size: 16px;
+    line-height: 1.2;
+}
+
+.edit-post-meta-boxes-area .postbox-header {
+    padding: 10px 0px;
+    background-color: #fafafa;
+}
+
 #side-sortables .bloglo-meta-box-field {
     margin: 15px 0;
 }
@@ -17,8 +27,6 @@
 
 #side-sortables .bloglo-checkbox-row {
     margin-top: 0;
-    --checkbox-input-size: 16px;
-    line-height: 1.2;
 }
 
 #side-sortables .bloglo-checkbox-row .bloglo-checkbox-wrapper .bloglo-checked-icon {
@@ -28,13 +36,14 @@
     fill: #FFF;
     cursor: pointer;
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: var(--checkbox-input-size);
+    height: var(--checkbox-input-size);
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     pointer-events: none;
+    transform: translate(-50%, -50%);
 }
 
 #side-sortables .bloglo-checkbox-row input[type='checkbox'] {
