@@ -60,42 +60,6 @@ class Bloglo_Enqueue_Scripts {
 			'all'
 		);
 
-		// Enqueue HTML5 shiv.
-		wp_register_script(
-			'html5shiv',
-			BLOGLO_THEME_URI . '/assets/js/' . $bloglo_dir . 'vendors/html5' . $bloglo_suffix . '.js',
-			array(),
-			'3.7.3',
-			true
-		);
-
-		// Load only on < IE9.
-		wp_script_add_data(
-			'html5shiv',
-			'conditional',
-			'lt IE 9'
-		);
-
-		// Flexibility.js for crossbrowser flex support.
-		wp_enqueue_script(
-			'bloglo-flexibility',
-			BLOGLO_THEME_URI . '/assets/js/' . $bloglo_dir . 'vendors/flexibility' . $bloglo_suffix . '.js',
-			array(),
-			BLOGLO_THEME_VERSION,
-			false
-		);
-
-		wp_add_inline_script(
-			'bloglo-flexibility',
-			'flexibility(document.documentElement);'
-		);
-
-		wp_script_add_data(
-			'bloglo-flexibility',
-			'conditional',
-			'IE'
-		);
-
 		// Register Bloglo slider.
 		wp_register_script(
 			'bloglo-slider',
