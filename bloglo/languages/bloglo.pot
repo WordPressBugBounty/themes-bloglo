@@ -15,7 +15,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -446,7 +446,7 @@ msgctxt "breadcrumbs aria label"
 msgid "Breadcrumbs"
 msgstr ""
 
-#: inc/breadcrumbs.php:333 inc/helpers.php:116
+#: inc/breadcrumbs.php:333 inc/helpers.php:115
 msgid "Home"
 msgstr ""
 
@@ -458,7 +458,7 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: inc/breadcrumbs.php:337 inc/helpers.php:126
+#: inc/breadcrumbs.php:337 inc/helpers.php:125
 #, php-format
 msgid "Search results for: %s"
 msgstr ""
@@ -517,16 +517,6 @@ msgstr ""
 #: inc/breadcrumbs.php:888
 msgctxt "weekly archives date format"
 msgid "W"
-msgstr ""
-
-#: inc/compatibility/back-compat.php:46 inc/compatibility/back-compat.php:74
-#, php-format
-msgid "Bloglo theme requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
-msgstr ""
-
-#: inc/compatibility/back-compat.php:59
-#, php-format
-msgid "Bloglo theme requires at least WordPress version 4.7. You are running version %s. Please upgrade your WordPress and try again."
 msgstr ""
 
 #: inc/compatibility/class-bloglo-beaver-themer.php:144
@@ -690,7 +680,7 @@ msgid "Ratings"
 msgstr ""
 
 #: inc/compatibility/woocommerce/class-bloglo-customizer-woocommerce.php:162
-#: woocommerce/cart/cart.php:31 woocommerce/cart/cart.php:80
+#: woocommerce/cart/cart.php:31 woocommerce/cart/cart.php:81
 msgid "Price"
 msgstr ""
 
@@ -858,7 +848,7 @@ msgid_plural "%s products"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/core/class-bloglo-enqueue-scripts.php:148
+#: inc/core/class-bloglo-enqueue-scripts.php:117
 #: template-parts/entry/entry-show-comments.php:20
 #, php-format
 msgid "Show %s Comment"
@@ -866,12 +856,12 @@ msgid_plural "Show %s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/core/class-bloglo-enqueue-scripts.php:148
+#: inc/core/class-bloglo-enqueue-scripts.php:117
 #: template-parts/entry/entry-show-comments.php:16
 msgid "Leave a Comment"
 msgstr ""
 
-#: inc/core/class-bloglo-enqueue-scripts.php:149
+#: inc/core/class-bloglo-enqueue-scripts.php:118
 msgid "Hide Comments"
 msgstr ""
 
@@ -984,7 +974,7 @@ msgid "Vietnamese"
 msgstr ""
 
 #: inc/core/class-bloglo-fonts.php:414
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:176
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:172
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:107
 msgid "Standard"
 msgstr ""
@@ -1049,10 +1039,14 @@ msgstr ""
 msgid "Select a category"
 msgstr ""
 
+#: inc/customizer/class-bloglo-customizer.php:554
+msgid "Error loading data"
+msgstr ""
+
 #: inc/customizer/controls/alignment/class-bloglo-customizer-control-alignment.php:44
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:117
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:571
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:738
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:743
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:910
 msgid "Top Left"
 msgstr ""
 
@@ -1068,15 +1062,15 @@ msgstr ""
 
 #: inc/customizer/controls/alignment/class-bloglo-customizer-control-alignment.php:46
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:118
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:572
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:739
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:744
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:911
 msgid "Top Right"
 msgstr ""
 
 #: inc/customizer/controls/alignment/class-bloglo-customizer-control-alignment.php:47
 #: inc/customizer/settings/class-bloglo-customizer-blog-page.php:217
 #: inc/customizer/settings/class-bloglo-customizer-logo.php:115
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:184
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:180
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:114
 msgid "Left"
 msgstr ""
@@ -1088,15 +1082,15 @@ msgstr ""
 #: inc/customizer/controls/alignment/class-bloglo-customizer-control-alignment.php:49
 #: inc/customizer/settings/class-bloglo-customizer-blog-page.php:218
 #: inc/customizer/settings/class-bloglo-customizer-logo.php:113
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:185
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:181
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:115
 msgid "Right"
 msgstr ""
 
 #: inc/customizer/controls/alignment/class-bloglo-customizer-control-alignment.php:50
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:120
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:574
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:741
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:746
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:913
 msgid "Bottom Left"
 msgstr ""
 
@@ -1112,8 +1106,8 @@ msgstr ""
 
 #: inc/customizer/controls/alignment/class-bloglo-customizer-control-alignment.php:52
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:121
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:575
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:742
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:747
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:914
 msgid "Bottom Right"
 msgstr ""
 
@@ -1121,14 +1115,14 @@ msgstr ""
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:120
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:125
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:314
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:196
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:768
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:334
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:940
 msgid "No image selected"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:60
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:126
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:197
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:335
 msgid "Less Settings"
 msgstr ""
 
@@ -1136,110 +1130,110 @@ msgstr ""
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:131
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:127
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:326
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:198
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:780
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:336
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:952
 #: inc/customizer/controls/typography/class-bloglo-customizer-control-typography.php:117
 msgid "Advanced"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:62
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:128
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:199
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:337
 msgid "Select Image"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:63
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:129
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:200
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:338
 msgid "Use This Image"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:125
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:321
 #: inc/customizer/controls/gallery/class-bloglo-customizer-control-gallery.php:54
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:429
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:449
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:775
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:990
-#: woocommerce/cart/cart.php:114
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:601
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:621
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:947
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1162
+#: woocommerce/cart/cart.php:115
 msgid "Remove"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:147
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:340
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:794
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:966
 msgid "No Repeat"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:148
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:341
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:795
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:967
 msgid "Repeat All"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:149
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:342
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:796
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:968
 msgid "Repeat Horizontally"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:150
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:343
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:797
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:969
 msgid "Repeat Vertically"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:157
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:350
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:804
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:976
 msgid "Background Position"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:160
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:353
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:807
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:979
 msgid "Horizontal"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:178
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:372
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:827
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:999
 msgid "Vertical"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:199
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:394
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:850
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1022
 msgid "Background Size"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:202
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:397
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:853
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1025
 msgid "Cover"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:205
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:400
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:856
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1028
 msgid "Contain"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:208
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:403
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:859
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1031
 msgid "Auto"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:215
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:410
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:866
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1038
 msgid "Background Attachment"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:218
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:413
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:869
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1041
 #: inc/customizer/controls/typography/class-bloglo-customizer-control-typography.php:127
 #: inc/customizer/controls/typography/class-bloglo-customizer-control-typography.php:130
 #: inc/customizer/controls/typography/class-bloglo-customizer-control-typography.php:152
@@ -1250,13 +1244,13 @@ msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:221
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:416
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:872
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1044
 msgid "Scroll"
 msgstr ""
 
 #: inc/customizer/controls/background/class-bloglo-customizer-control-background.php:224
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:419
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:875
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1047
 msgid "Fixed"
 msgstr ""
 
@@ -1281,14 +1275,14 @@ msgid "Type"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:104
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:456
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:642
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:628
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:814
 msgid "Color 1"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:105
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:484
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:670
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:656
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:842
 msgid "Color 2"
 msgstr ""
 
@@ -1297,76 +1291,76 @@ msgid "Location"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:108
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:516
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:701
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:688
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:873
 msgid "Linear"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:109
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:517
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:702
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:689
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:874
 msgid "Radial"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:110
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:524
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:709
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:696
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:881
 msgid "Angle"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:111
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:546
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:718
 #: inc/customizer/settings/class-bloglo-customizer-breadcrumbs.php:88
 msgid "Position"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:113
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:567
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:734
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:739
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:906
 msgid "Center Center"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:114
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:568
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:735
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:740
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:907
 msgid "Center Left"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:115
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:569
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:736
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:741
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:908
 msgid "Center Right"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:116
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:570
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:737
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:742
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:909
 msgid "Top Center"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:119
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:573
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:740
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:745
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:912
 msgid "Bottom Center"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:132
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:948
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1120
 msgid "Solid"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:133
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:949
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1121
 msgid "Dotted"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:134
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:950
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1122
 msgid "Dashed"
 msgstr ""
 
 #: inc/customizer/controls/design-options/class-bloglo-customizer-control-design-options.php:427
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:883
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1055
 msgid "Overlay Color"
 msgstr ""
 
@@ -1413,55 +1407,55 @@ msgid "If you Like our Products , Please Rate us 5 star on %1$sWordPress.org%2$s
 msgstr ""
 
 #: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:124
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:306
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:478
 msgid "Item"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:189
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:326
 msgid "Add new item"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:430
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:602
 msgid "Add"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:430
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:602
 msgid "Change"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:462
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:491
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:649
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:677
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:634
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:663
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:821
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:849
 msgid "Color location"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:513
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:698
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:685
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:870
 msgid "Gradient type"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:614
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:786
 msgid "Background type"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:629
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:801
 msgid "Background color"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:730
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:902
 msgid "Gradinet position"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:777
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:949
 msgid "Select image"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:992
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1164
 msgid "Close"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1014
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1186
 #: inc/customizer/customizer-helpers.php:54
 #: inc/customizer/widgets/class-bloglo-customizer-widget-search.php:51
 #: searchform.php:24 searchform.php:27
@@ -1470,7 +1464,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1018
+#: inc/customizer/controls/repeater/class-bloglo-customizer-control-repeater.php:1190
 msgid "Font Awesome"
 msgstr ""
 
@@ -2027,28 +2021,28 @@ msgstr ""
 
 #: inc/customizer/settings/class-bloglo-customizer-copyright-settings.php:126
 #: inc/customizer/settings/class-bloglo-customizer-featured-links.php:143
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:188
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:184
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:118
 msgid "Show on All Devices"
 msgstr ""
 
 #: inc/customizer/settings/class-bloglo-customizer-copyright-settings.php:127
 #: inc/customizer/settings/class-bloglo-customizer-featured-links.php:144
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:189
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:185
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:119
 msgid "Hide on Mobile"
 msgstr ""
 
 #: inc/customizer/settings/class-bloglo-customizer-copyright-settings.php:128
 #: inc/customizer/settings/class-bloglo-customizer-featured-links.php:145
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:190
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:186
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:120
 msgid "Hide on Tablet"
 msgstr ""
 
 #: inc/customizer/settings/class-bloglo-customizer-copyright-settings.php:129
 #: inc/customizer/settings/class-bloglo-customizer-featured-links.php:146
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:191
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:187
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:121
 msgid "Hide on Mobile and Tablet"
 msgstr ""
@@ -2172,7 +2166,7 @@ msgid "Post Details"
 msgstr ""
 
 #: inc/customizer/settings/class-bloglo-customizer-hero.php:226
-#: inc/helpers.php:1635 template-parts/hero/hero-hover-slider.php:90
+#: inc/helpers.php:1633 template-parts/hero/hero-hover-slider.php:99
 msgid "Continue Reading"
 msgstr ""
 
@@ -2292,62 +2286,62 @@ msgstr ""
 msgid "Click “Add new image” to upload an image file from your computer. Your theme works best with an image with a banner size of 732 × 90 pixels. "
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:97
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:93
 msgid "Ads url"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:116
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:112
 msgid "Open Ads link on"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:120
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:116
 msgid "Open in same tab"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:121
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:117
 msgid "Open in new tab"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:139
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:152
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:135
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:148
 msgid "Header Widgets"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:140
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:136
 msgid "Click the Add Widget button to add available widgets to your Header. Click the down arrow icon to expand widget options."
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:169
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:165
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:100
 msgid "Minimal"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:170
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:166
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:101
 msgid "Rounded"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:171
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:167
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:102
 msgid "Minimal Fill"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:172
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:168
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:103
 msgid "Rounded Fill"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:175
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:171
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:106
 msgid "Small"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:177
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:173
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:108
 msgid "Large"
 msgstr ""
 
-#: inc/customizer/settings/class-bloglo-customizer-main-header.php:178
+#: inc/customizer/settings/class-bloglo-customizer-main-header.php:174
 #: inc/customizer/settings/class-bloglo-customizer-top-bar.php:109
 msgid "Extra Large"
 msgstr ""
@@ -2863,23 +2857,23 @@ msgstr ""
 msgid "Shortcodes and basic html elements allowed."
 msgstr ""
 
-#: inc/customizer/widgets/class-bloglo-customizer-widget.php:161
+#: inc/customizer/widgets/class-bloglo-customizer-widget.php:168
 msgid "Edit widget:"
 msgstr ""
 
-#: inc/customizer/widgets/class-bloglo-customizer-widget.php:187
+#: inc/customizer/widgets/class-bloglo-customizer-widget.php:194
 msgid "Widget Location"
 msgstr ""
 
-#: inc/customizer/widgets/class-bloglo-customizer-widget.php:215
+#: inc/customizer/widgets/class-bloglo-customizer-widget.php:222
 msgid "Visibility"
 msgstr ""
 
-#: inc/customizer/widgets/class-bloglo-customizer-widget.php:236
+#: inc/customizer/widgets/class-bloglo-customizer-widget.php:243
 msgid "Delete"
 msgstr ""
 
-#: inc/customizer/widgets/class-bloglo-customizer-widget.php:239
+#: inc/customizer/widgets/class-bloglo-customizer-widget.php:246
 msgid "Done"
 msgstr ""
 
@@ -2887,116 +2881,120 @@ msgstr ""
 msgid "Wishlist"
 msgstr ""
 
-#: inc/helpers.php:122
+#: inc/helpers.php:121
 msgid "This page doesn&rsquo;t seem to exist."
 msgstr ""
 
-#: inc/helpers.php:132
+#: inc/helpers.php:131
 msgid "Posts by"
 msgstr ""
 
-#: inc/helpers.php:196
+#: inc/helpers.php:194
 #, php-format
 msgid "%s result found"
 msgid_plural "%s results found"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/helpers.php:198
+#: inc/helpers.php:196
 msgid "No results found"
 msgstr ""
 
-#: inc/template-tags.php:341
+#: inc/helpers.php:1865
+msgid "No Title"
+msgstr ""
+
+#: inc/template-tags.php:346
 msgid "Menu"
 msgstr ""
 
-#: inc/template-tags.php:376
+#: inc/template-tags.php:381
 msgid "Previous page"
 msgstr ""
 
-#: inc/template-tags.php:377
+#: inc/template-tags.php:382
 msgid "Next page"
 msgstr ""
 
-#: inc/template-tags.php:396
+#: inc/template-tags.php:401
 msgid "Pages"
 msgstr ""
 
-#: inc/template-tags.php:491
+#: inc/template-tags.php:496
 msgid "Posted by"
 msgstr ""
 
-#: inc/template-tags.php:503
+#: inc/template-tags.php:508
 msgid "By "
 msgstr ""
 
-#: inc/template-tags.php:504
+#: inc/template-tags.php:509
 #, php-format
 msgid "View all posts by %1$s"
 msgstr ""
 
-#: inc/template-tags.php:526
+#: inc/template-tags.php:534
 msgid "Last updated on"
 msgstr ""
 
-#: inc/template-tags.php:592
+#: inc/template-tags.php:600
 msgid "No Comments"
 msgstr ""
 
-#: inc/template-tags.php:592
+#: inc/template-tags.php:600
 msgid "1 Comment"
 msgstr ""
 
-#: inc/template-tags.php:592
+#: inc/template-tags.php:600
 msgid "% Comments"
 msgstr ""
 
-#: inc/template-tags.php:638
+#: inc/template-tags.php:646
 msgid "Posted in"
 msgstr ""
 
-#: inc/template-tags.php:686
+#: inc/template-tags.php:694
 msgid "Tags:"
 msgstr ""
 
-#: inc/template-tags.php:830 inc/template-tags.php:1014
+#: inc/template-tags.php:838 inc/template-tags.php:1022
 msgid "Menu not assigned"
 msgstr ""
 
-#: inc/template-tags.php:833 inc/template-tags.php:1017
+#: inc/template-tags.php:841 inc/template-tags.php:1025
 msgid "Assign a menu"
 msgstr ""
 
-#: inc/template-tags.php:917
+#: inc/template-tags.php:925
 msgid "Add Button Text"
 msgstr ""
 
-#: inc/template-tags.php:1081 sidebar.php:41
+#: inc/template-tags.php:1089 sidebar.php:41
 msgid "Click here to assign a widget."
 msgstr ""
 
-#: inc/template-tags.php:1114
+#: inc/template-tags.php:1122
 msgid "Pingback: "
 msgstr ""
 
-#: inc/template-tags.php:1114
+#: inc/template-tags.php:1122
 msgid "(Edit)"
 msgstr ""
 
-#: inc/template-tags.php:1133
+#: inc/template-tags.php:1141
 msgid "The post author"
 msgstr ""
 
-#: inc/template-tags.php:1133
+#: inc/template-tags.php:1141
 msgctxt "Post author badge on comments"
 msgid "A"
 msgstr ""
 
-#: inc/template-tags.php:1158
+#: inc/template-tags.php:1166
 msgid "Edit"
 msgstr ""
 
-#: inc/template-tags.php:1186
+#: inc/template-tags.php:1194
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
@@ -3161,11 +3159,11 @@ msgstr ""
 msgid "Scroll to Top"
 msgstr ""
 
-#: woocommerce/cart/cart.php:30 woocommerce/cart/cart.php:50
+#: woocommerce/cart/cart.php:30 woocommerce/cart/cart.php:51
 msgid "Product"
 msgstr ""
 
-#: woocommerce/cart/cart.php:32 woocommerce/cart/cart.php:86
+#: woocommerce/cart/cart.php:32 woocommerce/cart/cart.php:87
 msgid "Quantity"
 msgstr ""
 
@@ -3173,35 +3171,35 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: woocommerce/cart/cart.php:75
+#: woocommerce/cart/cart.php:76
 msgid "Available on backorder"
 msgstr ""
 
-#: woocommerce/cart/cart.php:108
+#: woocommerce/cart/cart.php:109
 msgid "Subtotal"
 msgstr ""
 
-#: woocommerce/cart/cart.php:121
+#: woocommerce/cart/cart.php:122
 msgid "Remove this item"
 msgstr ""
 
-#: woocommerce/cart/cart.php:142
+#: woocommerce/cart/cart.php:143
 msgid "Coupon:"
 msgstr ""
 
-#: woocommerce/cart/cart.php:142
+#: woocommerce/cart/cart.php:143
 msgid "Coupon code"
 msgstr ""
 
-#: woocommerce/cart/cart.php:142
+#: woocommerce/cart/cart.php:143
 msgid "Apply Coupon"
 msgstr ""
 
-#: woocommerce/cart/cart.php:147
+#: woocommerce/cart/cart.php:148
 msgid "Continue Shopping"
 msgstr ""
 
-#: woocommerce/cart/cart.php:149
+#: woocommerce/cart/cart.php:150
 msgid "Update Cart"
 msgstr ""
 
@@ -3247,7 +3245,7 @@ msgstr ""
 msgid "You must be logged in to checkout."
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:50
+#: woocommerce/checkout/form-checkout.php:49
 msgid "Your order"
 msgstr ""
 
@@ -3260,21 +3258,21 @@ msgctxt "submit button"
 msgid "Search"
 msgstr ""
 
-#: woocommerce/single-product/meta.php:33
+#: woocommerce/single-product/meta.php:35
 msgid "SKU:"
 msgstr ""
 
-#: woocommerce/single-product/meta.php:33
+#: woocommerce/single-product/meta.php:35
 msgid "N/A"
 msgstr ""
 
-#: woocommerce/single-product/meta.php:37
+#: woocommerce/single-product/meta.php:39
 msgid "Category:"
 msgid_plural "Categories:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: woocommerce/single-product/meta.php:39
+#: woocommerce/single-product/meta.php:41
 msgid "Tag:"
 msgid_plural "Tags:"
 msgstr[0] ""

@@ -1206,6 +1206,75 @@
         });
       };
 
+      control.initSelect2 = function ( $context ) {
+					$.each(
+						control.params.fields,
+						function ( fieldId, field ) {
+							if ( field.type === 'select' && field.is_select2 ) {
+								var $select = $context.find( '[data-live-id="' + field.id + '"]' );
+								if ( $select.length ) {
+									var select2Config = {
+										placeholder: field.placeholder || ( typeof bloglo_customizer_localized !== 'undefined' ? bloglo_customizer_localized.strings.select_category : 'Select' ),
+										allowClear: true,
+										minimumInputLength: 0,
+										width: '100%'
+									};
+
+									var ajaxUrl = ( typeof bloglo_customizer_localized !== 'undefined' && bloglo_customizer_localized.ajaxurl ) ? bloglo_customizer_localized.ajaxurl : ajaxurl;
+									var nonce = control.params.nonce || ( typeof bloglo_customizer_localized !== 'undefined' ? bloglo_customizer_localized.wpnonce : '' );
+
+									if ( field.data_source ) {
+										select2Config.ajax = {
+											url: ajaxUrl,
+											type: 'POST',
+											dataType: 'json',
+											delay: 250,
+											data: function( params ) {
+												return {
+													action: 'bloglo_load_select2_data',
+													search: params.term || '',
+													page: params.page || 1,
+													data_source: field.data_source,
+													data_source_name: field.data_source_name,
+													nonce: nonce
+												};
+											},
+											processResults: function( data, params ) {
+												params.page = params.page || 1;
+
+												if ( data.success && data.data && data.data.results ) {
+													return {
+														results: data.data.results,
+														pagination: {
+															more: data.data.pagination && data.data.pagination.more ? data.data.pagination.more : false
+														}
+													};
+												}
+
+												return {
+													results: []
+												};
+											},
+											cache: true,
+											error: function(error) {
+												console.error( typeof bloglo_customizer_localized !== 'undefined' ? bloglo_customizer_localized.strings.error_loading_data : 'Error loading data', error );
+											}
+										};
+									}
+
+									// Init select2
+									$select.select2( select2Config );
+
+									// Handle select2 changes to update the repeater values correctly
+									$select.on( 'select2:select select2:unselect select2:clear', function() {
+										control.updateValue();
+									} );
+								}
+							}
+						}
+					);
+				};
+
       /**
        * Init color picker
        *
@@ -1399,6 +1468,7 @@
         control.handleMedia($context);
         control.handleGradient($context);
         control.handleBackground($context);
+        control.initSelect2( $context );
 
         //Special check element
         $('[data-live-id="section_id"]', $context).each(function () {

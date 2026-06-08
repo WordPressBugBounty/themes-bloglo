@@ -15,21 +15,30 @@ $bloglo_args = array(
 	'post_status'         => 'publish',
 	'posts_per_page'      => $hero_hover_slider_post_number_count, // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page
 	'ignore_sticky_posts' => true,
-	'tax_query'           => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-		array(
-			'taxonomy' => 'post_format',
-			'field'    => 'slug',
-			'terms'    => array( 'post-format-quote' ),
-			'operator' => 'NOT IN',
-		),
+);
+
+$tax_query = array(
+	array(
+		'taxonomy' => 'post_format',
+		'field'    => 'slug',
+		'terms'    => array( 'post-format-quote' ),
+		'operator' => 'NOT IN',
 	),
 );
 
-$bloglo_hero_categories = bloglo_option( 'hero_hover_slider_category' );
+$bloglo_hero_categories = array_filter( array_map( 'absint', (array) bloglo_option( 'hero_hover_slider_category' ) ) );
 
+// If categories are specified.
 if ( ! empty( $bloglo_hero_categories ) ) {
-	$bloglo_args['category_name'] = implode( ', ', $bloglo_hero_categories );
+	$tax_query[] = array(
+		'taxonomy' => 'category',
+		'field'    => 'term_id',
+		'terms'    => $bloglo_hero_categories,
+		'operator' => 'IN',
+	);
 }
+
+$bloglo_args['tax_query'] = $tax_query;
 
 $bloglo_args = apply_filters( 'bloglo_hero_hover_slider_query_args', $bloglo_args );
 

@@ -117,7 +117,7 @@ if ( ! function_exists( 'bloglo_logo' ) ) :
 		$site_title               = bloglo_get_site_title();
 		$site_url                 = bloglo_get_site_url();
 
-		$site_logo_output		 = '';
+		$site_logo_output        = '';
 		$site_title_output       = '';
 		$site_description_output = '';
 
@@ -154,14 +154,13 @@ if ( ! function_exists( 'bloglo_logo' ) ) :
 				esc_html( $site_title ),
 				bloglo_get_schema_markup( 'name' ),
 				bloglo_get_schema_markup( 'url' ),
-				esc_attr($class)
+				esc_attr( $class )
 			)
 		);
-		
 
 		// Output site description if enabled in Customizer.
-		$class = !$display_site_description ? ' screen-reader-text' : '';
-		if( bloglo_get_site_description() ) {
+		$class = ! $display_site_description ? ' screen-reader-text' : '';
+		if ( bloglo_get_site_description() ) {
 			$site_description_output = apply_filters(
 				'bloglo_site_description_markup',
 				sprintf(
@@ -170,11 +169,10 @@ if ( ! function_exists( 'bloglo_logo' ) ) :
 					</p>',
 					esc_html( bloglo_get_site_description() ),
 					bloglo_get_schema_markup( 'description' ),
-					esc_attr($class)
+					esc_attr( $class )
 				)
 			);
 		}
-		
 
 		$output = '<div class="logo-inner">' . $site_logo_output . $site_title_output . $site_description_output . '</div>';
 
@@ -615,7 +613,7 @@ if ( ! function_exists( 'bloglo_entry_meta_category' ) ) :
 	 */
 	function bloglo_entry_meta_category( $sep = ', ', $show_icon = true, $limit_categories = -1, $return = false ) {
 
-		$categories = get_the_category();
+		$categories      = get_the_category();
 		$categories_list = '';
 
 		// Limit the number of categories if $limit_categories is provided.
@@ -1070,12 +1068,10 @@ if ( ! function_exists( 'bloglo_footer_widgets' ) ) :
 					<?php
 					if ( is_active_sidebar( $sidebar_id ) ) {
 						dynamic_sidebar( $sidebar_id );
-					} else {
-
-						if ( current_user_can( 'edit_theme_options' ) ) {
+					} elseif ( current_user_can( 'edit_theme_options' ) ) {
 
 							$sidebar_name = bloglo_get_sidebar_name_by_id( $sidebar_id );
-							?>
+						?>
 							<div class="bloglo-footer-widget bloglo-widget bloglo-no-widget">
 
 								<div class='h4 widget-title'><?php echo esc_html( $sidebar_name ); ?></div>
@@ -1091,7 +1087,7 @@ if ( ! function_exists( 'bloglo_footer_widgets' ) ) :
 								</p>
 							</div>
 							<?php
-						}
+
 					}
 					?>
 				</div>
@@ -1406,11 +1402,9 @@ function bloglo_maintenance_template_redirect() {
 	if ( $maintenance_mode_enable ) {
 
 		$date = new DateTime( $countdown . ' ' . $timezone );
-		// $timeToString = $date->format('Y/m/d H:i:s');
 
 		$date_now = new DateTime();
 
-		// var_dump( $timeToString );
 		if ( $date_now > $date && $make_site_live ) {
 			bloglo()->options->set( 'bloglo_enable_maintenance', false );
 			return;

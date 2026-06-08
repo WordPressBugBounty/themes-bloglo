@@ -550,7 +550,8 @@ if ( ! class_exists( 'Bloglo_Customizer' ) ) :
 				'color_palette'           => array( '#ffffff', '#000000', '#e4e7ec', '#0554f2', '#f7b40b', '#e04b43', '#30373e', '#8a63d4' ),
 				'preview_url_for_section' => $this->get_preview_urls_for_section(),
 				'strings'                 => array(
-					'selectCategory' => esc_html__( 'Select a category', 'bloglo' ),
+					'select_category'    => esc_html__( 'Select a category', 'bloglo' ),
+					'error_loading_data' => esc_html__( 'Error loading data', 'bloglo' ),
 				),
 			);
 

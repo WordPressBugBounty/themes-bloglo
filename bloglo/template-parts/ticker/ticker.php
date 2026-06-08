@@ -1,35 +1,43 @@
 <?php
 /**
- * The template for displaying Hero Hover Slider.
+ * The template for displaying Ticker Slider.
  *
  * @package     Bloglo
  * @author      Peregrine Themes
  * @since       1.0.0
  */
 
-$bloglo_ticker_categories = ! empty( $bloglo_ticker_categories ) ? implode( ', ', $bloglo_ticker_categories ) : '';
-
-// Setup Hero posts.
+// Setup Ticker posts.
 $bloglo_args = array(
 	'post_type'           => 'post',
 	'post_status'         => 'publish',
 	'posts_per_page'      => bloglo_option( 'ticker_post_number' ), // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page
 	'ignore_sticky_posts' => true,
-	'tax_query'           => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-		array(
-			'taxonomy' => 'post_format',
-			'field'    => 'slug',
-			'terms'    => array( 'post-format-quote' ),
-			'operator' => 'NOT IN',
-		),
+
+);
+
+$tax_query = array(
+	array(
+		'taxonomy' => 'post_format',
+		'field'    => 'slug',
+		'terms'    => array( 'post-format-quote' ),
+		'operator' => 'NOT IN',
 	),
 );
 
-$bloglo_ticker_categories = bloglo_option( 'ticker_category' );
+$bloglo_ticker_categories = array_filter( array_map( 'absint', (array) bloglo_option( 'ticker_category' ) ) );
 
+// If categories are specified.
 if ( ! empty( $bloglo_ticker_categories ) ) {
-	$bloglo_args['category_name'] = implode( ', ', $bloglo_ticker_categories );
+	$tax_query[] = array(
+		'taxonomy' => 'category',
+		'field'    => 'term_id',
+		'terms'    => $bloglo_ticker_categories,
+		'operator' => 'IN',
+	);
 }
+
+$bloglo_args['tax_query'] = $tax_query;
 
 $bloglo_args = apply_filters( 'bloglo_ticker_query_args', $bloglo_args );
 

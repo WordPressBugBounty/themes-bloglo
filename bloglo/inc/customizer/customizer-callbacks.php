@@ -63,10 +63,18 @@ function bloglo_sanitize_checkbox( $input ) {
  */
 function bloglo_sanitize_select( $input, $setting ) {
 
-	$multiple = isset( $setting->manager->get_control( $setting->id )->multiple ) ? $setting->manager->get_control( $setting->id )->multiple : false;
+	$control  = $setting->manager->get_control( $setting->id );
+	$multiple = isset( $control->multiple ) ? $control->multiple : false;
+	$choices  = isset( $control->choices ) ? $control->choices : array();
 
-	// Get list of choices from the control associated with the setting.
-	$choices = $setting->manager->get_control( $setting->id )->choices;
+	// For AJAX-backed Select2 controls we cannot validate only against the current
+	// preloaded choices, because a new selection may not be part of those choices.
+	if ( $control && ! empty( $control->is_select2 ) && ! empty( $control->data_source ) ) {
+		$dynamic = bloglo_sanitize_select_dynamic_source( $input, $setting, $control );
+		if ( false !== $dynamic ) {
+			return $dynamic;
+		}
+	}
 
 	if ( $multiple ) {
 
@@ -101,7 +109,150 @@ function bloglo_sanitize_select( $input, $setting ) {
 		// If the input is a valid key, return it; otherwise, return the default.
 		return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
 	}
+}
 
+/**
+ * Validate dynamic AJAX select values against the configured data source.
+ *
+ * @param mixed  $input   Submitted value or array of values.
+ * @param object $setting Setting object.
+ * @param object $control Customizer control.
+ *
+ * @return mixed False when not handled, otherwise sanitized input.
+ * @since 1.0.16
+ */
+function bloglo_sanitize_select_dynamic_source( $input, $setting, $control ) {
+	$data_source      = $control->data_source;
+	$data_source_name = $control->data_source_name;
+	$multiple         = isset( $control->multiple ) ? $control->multiple : false;
+
+	if ( $multiple ) {
+		if ( ! is_array( $input ) || empty( $input ) ) {
+			return array();
+		}
+
+		$input = array_map( 'sanitize_key', $input );
+		$input = array_filter( array_map( 'trim', $input ), 'strlen' );
+		if ( empty( $input ) ) {
+			return array();
+		}
+
+		$valid_ids = bloglo_sanitize_select2_valid_ids( $input, $data_source, $data_source_name );
+		if ( empty( $valid_ids ) ) {
+			return array();
+		}
+
+		$valid_ids = array_map( 'strval', $valid_ids );
+		return array_values( array_intersect( $input, $valid_ids ) );
+	}
+
+	$input = sanitize_key( $input );
+	if ( '' === $input ) {
+		return $setting->default;
+	}
+
+	$valid_ids = bloglo_sanitize_select2_valid_ids( array( $input ), $data_source, $data_source_name );
+	$valid_ids = array_map( 'strval', $valid_ids );
+
+	return in_array( $input, $valid_ids, true ) ? $input : $setting->default;
+}
+
+/**
+ * Return valid IDs for AJAX select2 choices from the configured source.
+ *
+ * @param array       $input_ids Submitted IDs.
+ * @param string      $data_source Data source identifier.
+ * @param string|null $data_source_name Optional taxonomy name.
+ *
+ * @return array Valid IDs.
+ * @since 1.0.16
+ */
+function bloglo_sanitize_select2_valid_ids( $input_ids, $data_source, $data_source_name = null ) {
+
+	if ( 'post_types' === $data_source || 'post_type' === $data_source ) {
+		return bloglo_sanitize_select2_valid_post_types( $input_ids );
+	}
+
+	$ids = array_map( 'absint', $input_ids );
+	$ids = array_filter( $ids );
+	if ( empty( $ids ) ) {
+		return array();
+	}
+
+	switch ( $data_source ) {
+		case 'category':
+			$args = array(
+				'taxonomy'   => $data_source_name ?? 'category',
+				'hide_empty' => false,
+				'include'    => $ids,
+				'fields'     => 'ids',
+			);
+			return get_terms( $args );
+
+		case 'tags':
+			$args = array(
+				'taxonomy'   => 'post_tag',
+				'hide_empty' => false,
+				'include'    => $ids,
+				'fields'     => 'ids',
+			);
+			return get_terms( $args );
+
+		case 'page':
+			$args = array(
+				'post_type'      => 'page',
+				'post_status'    => 'publish',
+				'post__in'       => $ids,
+				'posts_per_page' => count( $ids ),
+				'orderby'        => 'post__in',
+				'fields'         => 'ids',
+			);
+			return get_posts( $args );
+
+		case 'post':
+			$args = array(
+				'post_type'      => 'post',
+				'post_status'    => 'publish',
+				'post__in'       => $ids,
+				'posts_per_page' => count( $ids ),
+				'orderby'        => 'post__in',
+				'fields'         => 'ids',
+			);
+			return get_posts( $args );
+
+		default:
+			if ( ! post_type_exists( $data_source ) ) {
+				return array();
+			}
+			$args = array(
+				'post_type'      => $data_source,
+				'post_status'    => 'publish',
+				'post__in'       => $ids,
+				'posts_per_page' => count( $ids ),
+				'orderby'        => 'post__in',
+				'fields'         => 'ids',
+			);
+			return get_posts( $args );
+
+	}
+}
+
+/**
+ * Return valid post types for AJAX select2 choices.
+ *
+ * @param array $input Submitted post type slugs.
+ * @return array Valid post type slugs.
+ * @since 1.0.16
+ */
+function bloglo_sanitize_select2_valid_post_types( $input ) {
+	$input = array_map( 'sanitize_key', $input );
+	$input = array_filter( array_map( 'trim', $input ), 'strlen' );
+	if ( empty( $input ) ) {
+		return array();
+	}
+
+	$valid_post_types = get_post_types( array( 'public' => true ), 'names' );
+	return array_values( array_intersect( $input, $valid_post_types ) );
 }
 
 /**
@@ -255,7 +406,7 @@ function bloglo_sanitize_widget( $widgets, $setting ) {
 			if ( $widget_uses[ $widget['type'] ] > 0 ) {
 
 				// Widget count still good.
-				$widget_uses[ $widget['type'] ]--;
+				--$widget_uses[ $widget['type'] ];
 			} else {
 
 				// Exceeded widget max usage.
@@ -768,7 +919,38 @@ function bloglo_repeater_sanitize( $input, $setting ) {
 						break;
 					case 'select':
 						$data[ $i ][ $id ] = '';
-						if ( is_array( $fields[ $id ]['options'] ) && ! empty( $fields[ $id ]['options'] ) ) {
+						$is_select2        = ! empty( $fields[ $id ]['is_select2'] );
+						$data_source       = ! empty( $fields[ $id ]['data_source'] ) ? $fields[ $id ]['data_source'] : false;
+						$data_source_name  = ! empty( $fields[ $id ]['data_source_name'] ) ? $fields[ $id ]['data_source_name'] : null;
+
+						if ( $is_select2 && $data_source ) {
+							$multiple = ! empty( $fields[ $id ]['multiple'] );
+							if ( $multiple ) {
+								if ( is_array( $value ) && ! empty( $value ) ) {
+									$value = array_map( 'sanitize_key', $value );
+									$value = array_filter( array_map( 'trim', $value ), 'strlen' );
+									if ( ! empty( $value ) ) {
+										$valid_ids = bloglo_sanitize_select2_valid_ids( $value, $data_source, $data_source_name );
+										if ( ! empty( $valid_ids ) ) {
+											$valid_ids         = array_map( 'strval', $valid_ids );
+											$data[ $i ][ $id ] = array_values( array_intersect( $value, $valid_ids ) );
+										}
+									}
+								}
+							} else {
+								if ( is_array( $value ) ) {
+									$value = ! empty( $value ) ? reset( $value ) : '';
+								}
+								$value = sanitize_key( $value );
+								if ( '' !== $value ) {
+									$valid_ids = bloglo_sanitize_select2_valid_ids( array( $value ), $data_source, $data_source_name );
+									$valid_ids = array_map( 'strval', $valid_ids );
+									if ( in_array( $value, $valid_ids, true ) ) {
+										$data[ $i ][ $id ] = $value;
+									}
+								}
+							}
+						} elseif ( isset( $fields[ $id ]['options'] ) && is_array( $fields[ $id ]['options'] ) && array() !== $fields[ $id ]['options'] ) {
 							// if is multiple choices.
 							if ( is_array( $value ) ) {
 								foreach ( $value as $k => $v ) {
@@ -776,12 +958,10 @@ function bloglo_repeater_sanitize( $input, $setting ) {
 										$value[ $k ] = $v;
 									}
 								}
+
 								$data[ $i ][ $id ] = $value;
-							} else {
-								// is single choice.
-								if ( isset( $fields[ $id ]['options'][ $value ] ) ) {
-									$data[ $i ][ $id ] = $value;
-								}
+							} elseif ( isset( $fields[ $id ]['options'][ $value ] ) ) {
+								$data[ $i ][ $id ] = $value;
 							}
 						}
 						break;

@@ -77,6 +77,10 @@ class Bloglo_Enqueue_Scripts {
 			true
 		);
 
+		if ( wp_script_is( 'wc-cart-fragments', 'registered' ) && ! wp_script_is( 'wc-cart-fragments', 'enqueued' ) ) {
+			wp_enqueue_script( 'wc-cart-fragments' );
+		}
+
 		if ( bloglo()->options->get( 'bloglo_blog_layout' ) == 'blog-masonry' ) {
 			wp_enqueue_script( 'masonry' );
 		}
@@ -107,7 +111,7 @@ class Bloglo_Enqueue_Scripts {
 				'enabled' => bloglo_option( 'sticky_header' ),
 				'hide_on' => bloglo_option( 'sticky_header_hide_on' ),
 			),
-			'dark_mode' 			=> (bool) bloglo_option( 'dark_mode' ),
+			'dark_mode'             => (bool) bloglo_option( 'dark_mode' ),
 			'strings'               => array(
 				/* translators: %s Comment count */
 				'comments_toggle_show' => $comment_count > 0 ? esc_html( sprintf( _n( 'Show %s Comment', 'Show %s Comments', $comment_count, 'bloglo' ), $comment_count ) ) : esc_html__( 'Leave a Comment', 'bloglo' ),

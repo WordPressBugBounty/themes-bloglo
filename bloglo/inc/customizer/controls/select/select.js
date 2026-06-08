@@ -1,73 +1,91 @@
-(function ($) {
-  "use strict";
+;( function( $ ) {
 
-  wp.customize.controlConstructor["bloglo-select"] =
-    wp.customize.Control.extend({
-      ready: function () {
-        "use strict";
+ 	'use strict';
 
-        var control = this;
+ 	wp.customize.controlConstructor['bloglo-select'] = wp.customize.Control.extend({
 
-        if (control.params.is_select2) {
-          // Init select2.
-          control.container.find(".bloglo-select-control").select2({
-            placeholder:
-              control.params.placeholder ??
-              bloglo_customizer_localized.strings.selectCategory,
-            allowClear: true,
-          });
+		ready: function() {
 
-          // Populate select2 field.
-          control.container.on(
-            "select2:opening",
-            ".bloglo-select-control",
-            function () {
-              control.populate_select2();
-              control.container.off(
-                "select2:opening",
-                ".bloglo-select-control"
-              );
-            }
-          );
+			'use strict';
 
-          control.container.on(
-            "select2:select select2:unselect select2:clear",
-            ".bloglo-select-control",
-            function () {
-              if (!$(this).val()) {
-                control.setting.set([]);
-              }
-            }
-          );
-        }
-      },
+			var control = this;
 
-      // Populate select2.
-      populate_select2: function (e) {
-        var self = this,
-          options = "",
-          selected = "",
-          setting = self.setting.get();
+			if ( control.params.is_select2 ) {
 
-        if ("" === setting["font-family"]) {
-          selected = ' selected="selected"';
-        }
+				// Prepare select2 config
+				var select2Config = {
+					placeholder: control.params.placeholder ?? bloglo_customizer_localized.strings.select_category,
+					allowClear: true,
+					minimumInputLength: 0,
+					width: '100%'
+				};
 
-        $.each(self.params.choices, function (id, name) {
-          selected = "";
+				var ajaxUrl = ( typeof bloglo_customizer_localized !== 'undefined' && bloglo_customizer_localized.ajaxurl ) ? bloglo_customizer_localized.ajaxurl : ajaxurl;
+				var nonce = control.params.nonce || ( typeof bloglo_customizer_localized !== 'undefined' ? bloglo_customizer_localized.wpnonce : '' );
 
-          if (
-            (setting && self.params.multiple && -1 !== setting.indexOf(id)) ||
-            (!self.params.multiple && id === setting)
-          ) {
-            selected = ' selected="selected"';
-          }
+				if ( control.params.data_source ) {
+				select2Config.ajax = {
+					url: ajaxUrl,
+					type: 'POST',
+					dataType: 'json',
+					delay: 250,
+					data: function( params ) {
+						return {
+							action: 'bloglo_load_select2_data',
+							search: params.term || '',
+							page: params.page || 1,
+							data_source: control.params.data_source,
+							data_source_name: control.params.data_source_name,
+							nonce: nonce
+						};
+					},
+					processResults: function( data, params ) {
+						params.page = params.page || 1;
 
-          options +=
-            '<option value="' + id + '"' + selected + ">" + name + "</option>";
-        });
+						if ( data.success && data.data && data.data.results ) {
+							return {
+								results: data.data.results,
+								pagination: {
+									more: data.data.pagination && data.data.pagination.more ? data.data.pagination.more : false
+								}
+							};
+						}
 
-        self.container.find(".bloglo-select-control").html(options);
-      },
-    });
-})(jQuery);
+						return {
+							results: []
+						};
+					},
+					cache: true,
+					error: function(error) {
+						console.error( bloglo_customizer_localized.strings.error_loading_data, error );
+					}
+				};
+			}
+
+				// Init select2
+				control.container.find( '.bloglo-select-control' ).select2( select2Config );
+
+				// Handle select2 changes
+				control.container.on( 'select2:select select2:unselect select2:clear', '.bloglo-select-control', function() {
+					var value = $( this ).val();
+
+					if ( ! value || value.length === 0 ) {
+						control.setting.set( control.params.multiple ? [] : '' );
+					} else {
+						control.setting.set( value );
+					}
+				});
+
+			} else {
+				// Regular select: no special handling needed, just sanitize on change
+				control.container.on( 'change', '.bloglo-select-control', function() {
+					var value = $( this ).val();
+					control.setting.set( value );
+				});
+			}
+
+		}
+
+	});
+
+}( jQuery ) );

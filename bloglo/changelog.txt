@@ -1,3 +1,9 @@
+= 1.1.24 =
+* Improved the Select2 control in the customizer by adding AJAX support for dynamic data loading.
+* Migrate from slug based customizer settings to ID or term_id.
+* Fixed: Header cart widget not updating on cart item removed.
+* Updated WooCommerce Cart Template.
+
 = 1.1.23 =
 * WordPress 6.9 compatibility verified.
 

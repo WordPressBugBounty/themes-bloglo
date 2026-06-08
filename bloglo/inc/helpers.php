@@ -110,33 +110,31 @@ if ( ! function_exists( 'bloglo_get_the_title' ) ) {
 				// Yith wishlist title.
 				$title = apply_filters( 'bloglo_yith_wishlist_title', esc_html( $wishlist_title ) );
 			}
-		} else {
-			if ( is_front_page() && is_home() ) {
+		} elseif ( is_front_page() && is_home() ) {
 				// Homepage.
 				$title = apply_filters( 'bloglo_home_page_title', esc_html__( 'Home', 'bloglo' ) );
-			} elseif ( is_home() ) {
-				// Blog page.
-				$title = apply_filters( 'bloglo_blog_page_title', get_the_title( get_option( 'page_for_posts', true ) ) );
-			} elseif ( is_404() ) {
-				// 404 page - title always display.
-				$title = apply_filters( 'bloglo_404_page_title', esc_html__( 'This page doesn&rsquo;t seem to exist.', 'bloglo' ) );
-			} elseif ( is_search() ) {
-				// Search page - title always display.
-				/* translators: 1: search string */
-				$title = apply_filters( 'bloglo_search_page_title', sprintf( __( 'Search results for: %s', 'bloglo' ), get_search_query() ) );
-			} elseif ( class_exists( 'WooCommerce' ) && is_shop() ) {
-				// Woocommerce.
-				$title = woocommerce_page_title( false );
-			} elseif ( is_author() ) {
-				// Author post archive.
-				$title = apply_filters( 'bloglo_author_page_title', esc_html__( 'Posts by', 'bloglo' ) . ' ' . esc_html( get_the_author() ) );
-			} elseif ( is_category() || is_tag() || is_tax() ) {
-				// Category, tag and custom taxonomy archive.
-				$title = single_term_title( '', false );
-			} elseif ( is_archive() ) {
-				// Archive.
-				$title = get_the_archive_title();
-			}
+		} elseif ( is_home() ) {
+			// Blog page.
+			$title = apply_filters( 'bloglo_blog_page_title', get_the_title( get_option( 'page_for_posts', true ) ) );
+		} elseif ( is_404() ) {
+			// 404 page - title always display.
+			$title = apply_filters( 'bloglo_404_page_title', esc_html__( 'This page doesn&rsquo;t seem to exist.', 'bloglo' ) );
+		} elseif ( is_search() ) {
+			// Search page - title always display.
+			/* translators: 1: search string */
+			$title = apply_filters( 'bloglo_search_page_title', sprintf( __( 'Search results for: %s', 'bloglo' ), get_search_query() ) );
+		} elseif ( class_exists( 'WooCommerce' ) && is_shop() ) {
+			// Woocommerce.
+			$title = woocommerce_page_title( false );
+		} elseif ( is_author() ) {
+			// Author post archive.
+			$title = apply_filters( 'bloglo_author_page_title', esc_html__( 'Posts by', 'bloglo' ) . ' ' . esc_html( get_the_author() ) );
+		} elseif ( is_category() || is_tag() || is_tax() ) {
+			// Category, tag and custom taxonomy archive.
+			$title = single_term_title( '', false );
+		} elseif ( is_archive() ) {
+			// Archive.
+			$title = get_the_archive_title();
 		}
 		if ( $echo ) {
 			echo wp_kses( $title, bloglo_get_allowed_html_tags() );
@@ -1577,12 +1575,12 @@ function bloglo_body_classes( $classes ) {
 	}
 
 	// Section Heading Style.
-	$headingStyle = absint( bloglo_option( 'section_heading_style' ) );
-	$classes[]    = 'is-section-heading-init-s' . $headingStyle;
+	$heading_style = absint( bloglo_option( 'section_heading_style' ) );
+	$classes[]     = 'is-section-heading-init-s' . $heading_style;
 
 	// Initialize Parallax Footer.
-	$headingStyle = absint( bloglo_option( 'parallax_footer' ) );
-	if ( true == $headingStyle ) {
+	$heading_style = absint( bloglo_option( 'parallax_footer' ) );
+	if ( true === $heading_style ) {
 		$classes[] = 'is-parallax-footer';
 	}
 
@@ -1603,8 +1601,8 @@ function bloglo_body_classes( $classes ) {
 	}
 
 	// Footer Widget Heading Style.
-	$footerWidgetHeadingStyle = absint( bloglo_option( 'footer_widget_heading_style' ) );
-	$classes[]                = 'is-footer-heading-init-s' . $footerWidgetHeadingStyle;
+	$footer_widget_heading_style = absint( bloglo_option( 'footer_widget_heading_style' ) );
+	$classes[]                   = 'is-footer-heading-init-s' . $footer_widget_heading_style;
 
 	// Custom input fields design.
 	if ( bloglo_option( 'custom_input_style' ) ) {
@@ -1625,7 +1623,7 @@ add_filter( 'body_class', 'bloglo_body_classes' );
  * Modifies the default Read More link. Do not show if "Read More" button (from Customizer) is enabled.
  *
  * @since  1.0.0
- * @return Modified read more HTML.
+ * @return Mixed read more HTML.
  */
 function bloglo_modify_read_more_link() {
 
@@ -1718,3 +1716,171 @@ function bloglo_header_menu_desc( $item_output, $item, $depth, $args ) {
 	return $item_output;
 }
 add_filter( 'walker_nav_menu_start_el', 'bloglo_header_menu_desc', 10, 4 );
+
+/**
+ * Static AJAX callback to load select2 data dynamically.
+ *
+ * @since 1.0.29
+ */
+function bloglo_ajax_load_select2_data_static() {
+	check_ajax_referer( 'bloglo_customizer_nonce', 'nonce' );
+
+	$page             = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 1;
+	$search           = isset( $_POST['search'] ) ? sanitize_text_field( $_POST['search'] ) : '';
+	$data_source      = isset( $_POST['data_source'] ) ? sanitize_text_field( $_POST['data_source'] ) : '';
+	$data_source_name = isset( $_POST['data_source_name'] ) ? sanitize_text_field( $_POST['data_source_name'] ) : null;
+	$total            = 0;
+	$results          = array();
+	$per_page         = 25; // Items per page.
+
+	if ( empty( $data_source ) ) {
+		wp_send_json_error( 'Invalid data source' );
+	}
+
+	switch ( $data_source ) {
+
+		case 'category':
+			$args = array(
+				'hide_empty' => true,
+				'taxonomy'   => '' !== $data_source_name ? $data_source_name : 'category',
+				'search'     => $search,
+				'number'     => $per_page,
+				'offset'     => ( $page - 1 ) * $per_page,
+			);
+
+			$categories = get_terms( $args );
+			$total      = wp_count_terms(
+				array(
+					'taxonomy' => '' !== $data_source_name ? $data_source_name : 'category',
+					'search'   => $search,
+				)
+			);
+
+			if ( ! is_wp_error( $categories ) && ! empty( $categories ) ) {
+				foreach ( $categories as $category ) {
+					$results[] = array(
+						'id'   => $category->term_id,
+						'text' => $category->name,
+					);
+				}
+			}
+
+			break;
+
+		case 'tags':
+			$args = array(
+				'hide_empty' => true,
+				'taxonomy'   => 'post_tag',
+				'search'     => $search,
+				'number'     => $per_page,
+				'offset'     => ( $page - 1 ) * $per_page,
+			);
+
+			$tags  = get_terms( $args );
+			$total = wp_count_terms(
+				array(
+					'taxonomy' => 'post_tag',
+					'search'   => $search,
+				)
+			);
+
+			if ( ! is_wp_error( $tags ) && ! empty( $tags ) ) {
+				foreach ( $tags as $tag ) {
+					$results[] = array(
+						'id'   => $tag->term_id,
+						'text' => $tag->name,
+					);
+				}
+			}
+
+			break;
+
+		case 'page':
+			$args = array(
+				'post_type'      => 'page',
+				'posts_per_page' => $per_page,
+				'paged'          => $page,
+				'post_status'    => 'publish',
+				's'              => $search,
+			);
+
+			$query = new WP_Query( $args );
+			$total = $query->found_posts;
+
+			if ( ! empty( $query->posts ) ) {
+				foreach ( $query->posts as $post ) {
+					$results[] = array(
+						'id'   => $post->ID,
+						'text' => $post->post_title,
+					);
+				}
+			}
+
+			wp_reset_postdata();
+			break;
+
+		case 'post':
+			$args = array(
+				'post_type'      => 'post',
+				'posts_per_page' => $per_page,
+				'paged'          => $page,
+				'post_status'    => 'publish',
+				's'              => $search,
+			);
+
+			$query = new WP_Query( $args );
+			$total = $query->found_posts;
+
+			if ( ! empty( $query->posts ) ) {
+				foreach ( $query->posts as $post ) {
+					$results[] = array(
+						'id'   => $post->ID,
+						'text' => $post->post_title,
+					);
+				}
+			}
+
+			wp_reset_postdata();
+			break;
+
+		default:
+			if ( post_type_exists( $data_source ) ) {
+				$args = array(
+					'post_type'      => $data_source,
+					'posts_per_page' => $per_page,
+					'paged'          => $page,
+					'post_status'    => 'publish',
+					's'              => $search,
+					'orderby'        => 'title',
+					'order'          => 'ASC',
+				);
+
+				$query = new WP_Query( $args );
+				$total = $query->found_posts;
+
+				if ( ! empty( $query->posts ) ) {
+					foreach ( $query->posts as $post ) {
+						$results[] = array(
+							'id'   => $post->ID,
+							'text' => $post->post_title ?? __( 'No Title', 'bloglo' ),
+						);
+					}
+				}
+
+				wp_reset_postdata();
+			} else {
+				wp_send_json_error( 'Invalid data source' );
+			}
+			break;
+	}
+
+	wp_send_json_success(
+		array(
+			'results'    => $results,
+			'pagination' => array(
+				'more' => ( $page * $per_page ) < $total,
+			),
+		)
+	);
+}
+add_action( 'wp_ajax_bloglo_load_select2_data', 'bloglo_ajax_load_select2_data_static' );

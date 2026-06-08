@@ -1,35 +1,42 @@
 <?php
 /**
- * The template for displaying Hero Hover Slider.
+ * The template for displaying PYML Slider.
  *
  * @package     Bloglo
  * @author      Peregrine Themes
  * @since       1.0.0
  */
 
-$bloglo_pyml_categories = ! empty( $bloglo_pyml_categories ) ? implode( ', ', $bloglo_pyml_categories ) : '';
-
-// Setup Hero posts.
+// Setup PYML posts.
 $bloglo_args = array(
 	'post_type'           => 'post',
 	'post_status'         => 'publish',
 	'posts_per_page'      => bloglo_option( 'pyml_post_number' ), // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page
 	'ignore_sticky_posts' => true,
-	'tax_query'           => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-		array(
-			'taxonomy' => 'post_format',
-			'field'    => 'slug',
-			'terms'    => array( 'post-format-quote' ),
-			'operator' => 'NOT IN',
-		),
+);
+
+$tax_query = array(
+	array(
+		'taxonomy' => 'post_format',
+		'field'    => 'slug',
+		'terms'    => array( 'post-format-quote' ),
+		'operator' => 'NOT IN',
 	),
 );
 
-$bloglo_pyml_categories = bloglo_option( 'pyml_category' );
+$bloglo_pyml_categories = array_filter( array_map( 'absint', (array) bloglo_option( 'pyml_category' ) ) );
 
+// If categories are specified.
 if ( ! empty( $bloglo_pyml_categories ) ) {
-	$bloglo_args['category_name'] = implode( ', ', $bloglo_pyml_categories );
+	$tax_query[] = array(
+		'taxonomy' => 'category',
+		'field'    => 'term_id',
+		'terms'    => $bloglo_pyml_categories,
+		'operator' => 'IN',
+	);
 }
+
+$bloglo_args['tax_query'] = $tax_query;
 
 $bloglo_args = apply_filters( 'bloglo_pyml_query_args', $bloglo_args );
 
@@ -55,7 +62,7 @@ while ( $bloglo_posts->have_posts() ) :
 	// Post items HTML markup.
 	ob_start();
 	?>
-	<div class="<?php echo $bloglo_posts_per_page; ?>">
+	<div class="<?php echo esc_attr( $bloglo_posts_per_page ); ?>">
 		<div class="pyml-slide-item">
 
 			<div class="pyml-slider-backgrounds">
@@ -64,7 +71,7 @@ while ( $bloglo_posts->have_posts() ) :
 				</a>
 				<?php if ( isset( $bloglo_pyml_elements['category'] ) && $bloglo_pyml_elements['category'] ) { ?>
 					<div class="post-category">
-						<?php bloglo_entry_meta_category( ' ', false, apply_filters('bloglo_pyml_category_limit', 3) ); ?>
+						<?php bloglo_entry_meta_category( ' ', false, apply_filters( 'bloglo_pyml_category_limit', 3 ) ); ?>
 					</div>
 				<?php } ?>
 			</div><!-- END .pyml-slider-items -->

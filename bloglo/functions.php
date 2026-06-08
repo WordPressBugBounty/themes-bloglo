@@ -67,7 +67,7 @@ final class Bloglo {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $version = '1.1.23';
+	public $version = '1.1.24';
 	/**
 	 * Main Bloglo Instance.
 	 *
@@ -143,6 +143,7 @@ final class Bloglo {
 		require_once BLOGLO_THEME_PATH . '/inc/compatibility/class-bloglo-elementor.php';
 		require_once BLOGLO_THEME_PATH . '/inc/compatibility/class-bloglo-elementor-pro.php';
 		require_once BLOGLO_THEME_PATH . '/inc/compatibility/class-bloglo-hfe.php';
+		require_once BLOGLO_THEME_PATH . '/inc/compatibility/back-compat.php';
 
 		if ( is_admin() ) {
 			require_once BLOGLO_THEME_PATH . '/inc/utilities/class-bloglo-plugin-utilities.php';
