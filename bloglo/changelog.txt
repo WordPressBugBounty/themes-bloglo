@@ -1,3 +1,8 @@
+= 1.1.25 =
+* Hardened term lookups in breadcrumbs to prevent errors when a term is missing or invalid.
+* Updated WooCommerce Cart Template.
+* Updated ad banner HTML classes to bypass ad blockers
+
 = 1.1.24 =
 * Improved the Select2 control in the customizer by adding AJAX support for dynamic data loading.
 * Migrate from slug based customizer settings to ID or term_id.
