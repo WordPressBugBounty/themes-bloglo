@@ -22,8 +22,14 @@ get_header();
 do_action( 'bloglo_before_singular_container' );
 ?>
 
-<?php if ( '' !== get_the_content() ) : 
-	do_action( 'bloglo_before_container' ); ?>
+<?php
+// A page with no content (for example a custom homepage built from hooked sections) skips the content area,
+// unless a plugin renders the page body itself (BuddyPress, bbPress, Elementor). See bloglo_page_has_plugin_body().
+$bloglo_show_page_body = '' !== get_the_content() || bloglo_page_has_plugin_body();
+
+if ( apply_filters( 'bloglo_show_empty_page_body', $bloglo_show_page_body ) ) :
+	do_action( 'bloglo_before_container' );
+	?>
 <div class="bloglo-container">
 
 	<div id="primary" class="content-area">
@@ -49,9 +55,10 @@ do_action( 'bloglo_before_singular_container' );
 	<?php do_action( 'bloglo_sidebar' ); ?>
 
 </div><!-- END .bloglo-container -->
-<?php 
-do_action( 'bloglo_after_container' );
-endif; ?>
+<?php
+	do_action( 'bloglo_after_container' );
+endif;
+?>
 
 <?php
 do_action( 'bloglo_after_singular_container' );

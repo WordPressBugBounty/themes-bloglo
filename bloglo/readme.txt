@@ -1,12 +1,12 @@
 === Bloglo ===
 Contributors: Peregrinethemes
-Tags: two-columns, right-sidebar, left-sidebar, footer-widgets, blog, news, entertainment, custom-background, custom-menu, custom-logo, post-formats, sticky-post, editor-style, threaded-comments, translation-ready, custom-colors, featured-images, full-width-template, microformats, theme-options, e-commerce, front-page-posting, flexible-header, wide-blocks
+Tags: two-columns, right-sidebar, left-sidebar, footer-widgets, blog, news, entertainment, custom-background, custom-menu, custom-logo, post-formats, sticky-post, editor-style, threaded-comments, translation-ready, custom-colors, featured-images, full-width-template, microformats, theme-options, e-commerce, front-page-posting, flexible-header, wide-blocks, buddypress
 Requires at least: 5.4
 Tested up to: 7.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.1.25
+Stable tag: 1.1.26
 
 A lightweight and highly customizable multi-purpose theme that makes it easy for anyone to create their perfect website.
 
@@ -28,6 +28,23 @@ Bloglo WordPress Theme, Copyright (c) 2023, Peregrinethemes
 Bloglo is distributed under the terms of the GNU GPLs
 
 == Changelog ==
+
+= 1.1.26 =
+* BuddyPress plugin support added, styled to match the Bloglo design (including dark mode and Better Messages).
+* Security: Select2 AJAX endpoint now requires the edit_theme_options capability and only exposes public post types and taxonomies.
+* Security: Admin notice dismissal now requires the edit_theme_options capability and sanitizes its input.
+* Security: Meta box saving now checks the edit_post capability for the specific post.
+* Hardened escaping of blog layout classes, post excerpts and the excerpt "more" text.
+* Fixed the recommended plugins notice not staying dismissed.
+* Updated WooCommerce cart and single product meta templates for WooCommerce 11.3 compatibility.
+* Fixed cart quantity plus/minus buttons not showing when the first cart item is sold individually.
+* Fixed the coupon label showing between the coupon field and the Apply Coupon button on the cart page.
+* Fixed WooCommerce buttons being underlined on the cart page.
+* Fixed checkout form fields and country/state dropdowns not matching the theme style with recent WooCommerce versions.
+* Fixed checkout order review prices wrapping onto two lines.
+* Fixed the missing space between Add to cart and buttons added after it, such as Add to wishlist.
+* Fixed single product meta alignment for wrapped categories and the Brand row.
+* Fixed inconsistent cart row spacing on mobile.
 
 = 1.1.25 =
 * Hardened term lookups in breadcrumbs to prevent errors when a term is missing or invalid.

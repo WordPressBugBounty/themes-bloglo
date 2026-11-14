@@ -154,12 +154,12 @@ function bloglo_dismiss_notice() {
 
 	check_ajax_referer( 'bloglo_dismiss_notice' );
 
-	if ( ! isset( $_POST['msgid'] ) ) {
+	if ( ! current_user_can( 'edit_theme_options' ) || ! isset( $_POST['msgid'] ) ) {
 		die;
 	}
 
-	$message_id = sanitize_text_field( wp_unslash( $_POST['msgid'] ) );
-	$expires    = isset( $post['expires'] ) ? intval( $post['expires'] ) : 0;
+	$message_id = sanitize_key( wp_unslash( $_POST['msgid'] ) );
+	$expires    = isset( $_POST['expires'] ) ? absint( $_POST['expires'] ) : 0;
 
 	$message              = (array) get_transient( 'bloglo_notice_' . $message_id );
 	$message['time']      = time();

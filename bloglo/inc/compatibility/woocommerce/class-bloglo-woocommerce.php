@@ -237,6 +237,9 @@ if ( ! class_exists( 'Bloglo_Woocommerce' ) ) :
 			add_filter( 'bloglo_get_the_id', array( $this, 'get_the_id' ) );
 
 			add_filter( 'woocommerce_product_related_products_heading', array( $this, 'related_products_heading' ) );
+
+			// Match the brand row in product meta with the other meta rows.
+			add_filter( 'woocommerce_product_brands_output', array( $this, 'product_brands_output' ), 5, 3 );
 		}
 
 		/**
@@ -942,6 +945,33 @@ if ( ! class_exists( 'Bloglo_Woocommerce' ) ) :
 		 */
 		public function related_products_heading( $heading ) {
 			return __( 'Related Products', 'bloglo' );
+		}
+
+		/**
+		 * Wrap the brand label in single product meta with the same markup as
+		 * the SKU, category and tag labels.
+		 *
+		 * @since 1.1.26
+		 *
+		 * @param string     $output  Brand output HTML.
+		 * @param array|bool $terms   Brand terms.
+		 * @param int        $post_id Product ID.
+		 * @return string
+		 */
+		public function product_brands_output( $output, $terms, $post_id ) {
+			if ( empty( $terms ) || is_wp_error( $terms ) || ! function_exists( 'wc_get_brands' ) ) {
+				return $output;
+			}
+
+			$taxonomy = get_taxonomy( 'product_brand' );
+
+			if ( ! $taxonomy ) {
+				return $output;
+			}
+
+			$label = 1 < count( $terms ) ? $taxonomy->labels->name : $taxonomy->labels->singular_name;
+
+			return wc_get_brands( $post_id, ', ', '<span class="posted_in"><span class="bloglo-woo-meta-title">' . esc_html( $label ) . ':</span> ', '</span>' );
 		}
 
 		/**

@@ -272,7 +272,7 @@ if ( ! class_exists( 'Bloglo_Admin' ) ) :
 			}
 
 			// Display if not dismissed and not on Bloglo plugins page.
-			if ( ! bloglo_is_notice_dismissed( 'bloglo_notice_recommended-plugins' ) && ! bloglo_is_admin_page( false, 'bloglo-plugins' ) ) {
+			if ( ! bloglo_is_notice_dismissed( 'recommended-plugins' ) && ! bloglo_is_admin_page( false, 'bloglo-plugins' ) ) {
 
 				$plugins = bloglo_plugin_utilities()->get_recommended_plugins();
 				$plugins = bloglo_plugin_utilities()->get_deactivated_plugins( $plugins );

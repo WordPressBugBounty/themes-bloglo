@@ -503,11 +503,11 @@ function bloglo_content() {
 
 	if ( have_posts() ) :
 
-		echo '<div class="bloglo-flex-row g-4 ' . $bloglo_blog_layout . '">';
+		echo '<div class="bloglo-flex-row g-4 ' . esc_attr( $bloglo_blog_layout ) . '">';
 		while ( have_posts() ) :
 			the_post();
 
-			echo '<div class="col-md-' . $bloglo_blog_layout_column . ' col-sm-' . $bloglo_blog_layout_column . ' col-xs-12">';
+			echo '<div class="col-md-' . absint( $bloglo_blog_layout_column ) . ' col-sm-' . absint( $bloglo_blog_layout_column ) . ' col-xs-12">';
 			get_template_part( 'template-parts/content/content', bloglo_get_article_feed_layout() );
 			echo '</div>';
 		endwhile;

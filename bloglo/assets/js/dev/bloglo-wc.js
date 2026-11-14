@@ -102,10 +102,14 @@
 				$input,
 				$this;
 
-			// Append plus and minus buttons to cart quantity.
-			var $quantInput = $( 'div.quantity:not(.appended), td.quantity:not(.appended)' ).find( '.qty' );
+			// Append plus and minus buttons to cart quantity. Check each input
+			// separately, a hidden (sold individually) input must not prevent
+			// the buttons from being added to the other quantity inputs.
+			var $quantInput = $( 'div.quantity:not(.appended), td.quantity:not(.appended)' ).find( '.qty' ).filter( function() {
+				return 'date' !== this.type && 'hidden' !== this.type;
+			});
 
-			if ( $quantInput.length && 'date' !== $quantInput.prop( 'type' ) && 'hidden' !== $quantInput.prop( 'type' ) ) {
+			if ( $quantInput.length ) {
 
 				// Add plus and minus icons
 				$quantInput.parent().addClass( 'appended' );
@@ -131,7 +135,7 @@
 					$input.val( $newQuantity );
 
 					// Trigger change.
-					$quantInput.trigger( 'change' );
+					$input.trigger( 'change' );
 				});
 			}
 		},

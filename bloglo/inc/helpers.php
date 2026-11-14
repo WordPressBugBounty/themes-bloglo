@@ -1725,10 +1725,15 @@ add_filter( 'walker_nav_menu_start_el', 'bloglo_header_menu_desc', 10, 4 );
 function bloglo_ajax_load_select2_data_static() {
 	check_ajax_referer( 'bloglo_customizer_nonce', 'nonce' );
 
-	$page             = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 1;
-	$search           = isset( $_POST['search'] ) ? sanitize_text_field( $_POST['search'] ) : '';
-	$data_source      = isset( $_POST['data_source'] ) ? sanitize_text_field( $_POST['data_source'] ) : '';
-	$data_source_name = isset( $_POST['data_source_name'] ) ? sanitize_text_field( $_POST['data_source_name'] ) : null;
+	// Only users who can use the Customizer may query site content through this endpoint.
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		wp_send_json_error( 'Insufficient permissions', 403 );
+	}
+
+	$page             = isset( $_POST['page'] ) ? max( 1, absint( $_POST['page'] ) ) : 1;
+	$search           = isset( $_POST['search'] ) ? sanitize_text_field( wp_unslash( $_POST['search'] ) ) : '';
+	$data_source      = isset( $_POST['data_source'] ) ? sanitize_text_field( wp_unslash( $_POST['data_source'] ) ) : '';
+	$data_source_name = isset( $_POST['data_source_name'] ) ? sanitize_key( wp_unslash( $_POST['data_source_name'] ) ) : '';
 	$total            = 0;
 	$results          = array();
 	$per_page         = 25; // Items per page.
@@ -1740,9 +1745,17 @@ function bloglo_ajax_load_select2_data_static() {
 	switch ( $data_source ) {
 
 		case 'category':
+			// Only expose public taxonomies.
+			$taxonomy = '' !== $data_source_name ? $data_source_name : 'category';
+			$tax_obj  = taxonomy_exists( $taxonomy ) ? get_taxonomy( $taxonomy ) : false;
+
+			if ( ! $tax_obj || ! $tax_obj->public ) {
+				wp_send_json_error( 'Invalid data source' );
+			}
+
 			$args = array(
 				'hide_empty' => true,
-				'taxonomy'   => '' !== $data_source_name ? $data_source_name : 'category',
+				'taxonomy'   => $taxonomy,
 				'search'     => $search,
 				'number'     => $per_page,
 				'offset'     => ( $page - 1 ) * $per_page,
@@ -1751,7 +1764,7 @@ function bloglo_ajax_load_select2_data_static() {
 			$categories = get_terms( $args );
 			$total      = wp_count_terms(
 				array(
-					'taxonomy' => '' !== $data_source_name ? $data_source_name : 'category',
+					'taxonomy' => $taxonomy,
 					'search'   => $search,
 				)
 			);
@@ -1844,7 +1857,10 @@ function bloglo_ajax_load_select2_data_static() {
 			break;
 
 		default:
-			if ( post_type_exists( $data_source ) ) {
+			// Only expose public post types.
+			$source_obj = post_type_exists( $data_source ) ? get_post_type_object( $data_source ) : false;
+
+			if ( $source_obj && $source_obj->public ) {
 				$args = array(
 					'post_type'      => $data_source,
 					'posts_per_page' => $per_page,

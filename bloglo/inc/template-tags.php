@@ -448,7 +448,7 @@ if ( ! function_exists( 'bloglo_excerpt' ) ) :
 
 		// Check if this post has a custom excerpt.
 		if ( has_excerpt( $post->ID ) ) {
-			$output = $post->post_excerpt;
+			$output = wp_kses_post( $post->post_excerpt );
 		} else {
 			// Check for more tag.
 			if ( strpos( $post->post_content, '<!--more-->' ) ) {
@@ -460,7 +460,7 @@ if ( ! function_exists( 'bloglo_excerpt' ) ) :
 				}
 
 				if ( null === $more ) {
-					$more = apply_filters( 'excerpt_more', bloglo_option( 'excerpt_more' ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+					$more = wp_kses_post( apply_filters( 'excerpt_more', bloglo_option( 'excerpt_more' ) ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 				}
 
 				$output = wp_trim_words( strip_shortcodes( $post->post_content ), $length, $more );

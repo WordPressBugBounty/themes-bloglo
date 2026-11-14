@@ -14,7 +14,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 11.0.0
+ * @version 11.3.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -44,6 +44,17 @@ do_action( 'woocommerce_before_cart' ); ?>
 				$visible    = apply_filters( 'woocommerce_cart_item_visible', true, $cart_item, $cart_item_key );
 
 				if ( $_product instanceof WC_Product && $_product->exists() && $cart_item['quantity'] > 0 && $visible ) {
+					$cart_item_name = WC()->cart->get_item_product_name( $cart_item, $_product );
+
+					/**
+					 * Filter the product name.
+					 *
+					 * @since 2.1.0
+					 * @param string $product_name  Name of the product in the cart.
+					 * @param array  $cart_item     The product in the cart.
+					 * @param string $cart_item_key Key for the product in the cart.
+					 */
+					$product_name      = apply_filters( 'woocommerce_cart_item_name', $cart_item_name, $cart_item, $cart_item_key );
 					$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 					?>
 					<tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
@@ -61,19 +72,19 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 						<?php
 						if ( ! $product_permalink ) {
-							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', esc_html( $_product->get_name() ), $cart_item, $cart_item_key ) . '&nbsp;' );
+							echo wp_kses_post( $product_name . '&nbsp;' );
 						} else {
-							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), esc_html( $_product->get_name() ) ), $cart_item, $cart_item_key ) );
+							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $cart_item_name ), $cart_item, $cart_item_key ) );
 						}
 
 						do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key );
 
 						// Meta data.
-						echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore
+						echo wc_get_formatted_cart_item_data( $cart_item, false, $cart_item_name ); // phpcs:ignore
 
 						// Backorder notification.
 						if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
-							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'bloglo' ) . '</p>', $product_id ) );
+							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'bloglo' ) . '</p>', $product_id, $cart_item, $cart_item_key ) );
 						}
 						?>
 						</td>
@@ -100,7 +111,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 								'input_value'  => $cart_item['quantity'],
 								'max_value'    => $max_quantity,
 								'min_value'    => $min_quantity,
-								'product_name' => $_product->get_name(),
+								'product_name' => $product_name,
 							),
 							$_product,
 							false
@@ -144,7 +155,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 					<?php if ( wc_coupons_enabled() ) { ?>
 						<div class="coupon">
-							<label for="coupon_code"><?php esc_html_e( 'Coupon:', 'bloglo' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'bloglo' ); ?>" /> <button type="submit" class="bloglo-btn btn-secondary" name="apply_coupon" value="<?php esc_attr_e( 'Apply Coupon', 'bloglo' ); ?>"><?php esc_html_e( 'Apply Coupon', 'bloglo' ); ?></button>
+							<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'bloglo' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'bloglo' ); ?>" /> <button type="submit" class="bloglo-btn btn-secondary" name="apply_coupon" value="<?php esc_attr_e( 'Apply Coupon', 'bloglo' ); ?>"><?php esc_html_e( 'Apply Coupon', 'bloglo' ); ?></button>
 							<?php do_action( 'woocommerce_cart_coupon' ); ?>
 						</div>
 					<?php } ?>

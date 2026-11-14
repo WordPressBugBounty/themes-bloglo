@@ -315,6 +315,11 @@ if ( ! class_exists( 'Bloglo_Meta_Boxes' ) ) :
 				return;
 			}
 
+			// The current user must be allowed to edit this particular post.
+			if ( ! current_user_can( 'edit_post', $post_id ) ) {
+				return;
+			}
+
 			// Loop through all metaboxes.
 			foreach ( $this->metabox as $id => $metabox ) {
 

@@ -15,7 +15,7 @@
  * @see         https://docs.woocommerce.com/document/template-structure/
  * @author      WooThemes
  * @package     WooCommerce/Templates
- * @version     9.7.0
+ * @version     11.2.0
  */
 
 use Automattic\WooCommerce\Enums\ProductType;
@@ -36,7 +36,26 @@ global $product;
 
 	<?php endif; ?>
 
-	<?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in"><span class="bloglo-woo-meta-title">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'bloglo' ) . '</span> ', '</span>' ); // phpcs:ignore ?>
+	<?php
+	/**
+	 * Filters the ordering mode for product categories in the single product meta.
+	 *
+	 * @param string     $orderby Ordering mode passed to wc_get_product_category_list().
+	 * @param WC_Product $product Product object.
+	 *
+	 * @since 11.2.0
+	 */
+	$product_category_orderby = apply_filters( 'woocommerce_product_meta_category_orderby', 'breadcrumb', $product ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+
+	$product_category_list = wc_get_product_category_list(
+		$product->get_id(),
+		', ',
+		'<span class="posted_in"><span class="bloglo-woo-meta-title">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'bloglo' ) . '</span> ',
+		'</span>',
+		is_string( $product_category_orderby ) ? $product_category_orderby : ''
+	);
+	echo is_string( $product_category_list ) ? $product_category_list : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	?>
 
 	<?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as"><span class="bloglo-woo-meta-title">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'bloglo' ) . '</span> ', '</span>' ); // phpcs:ignore ?>
 

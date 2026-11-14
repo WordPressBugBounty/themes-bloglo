@@ -3778,3 +3778,67 @@ a.add_to_wishlist.button.alt {
     display: none;
   }
 }
+
+/* WooCommerce 11.x compatibility fixes. */
+
+/* Form fields: map WooCommerce form variables to the theme field style. */
+.woocommerce {
+  --wc-form-border-color: rgba(190, 190, 190, 0.3);
+  --wc-form-border-width: 0.2rem;
+  --wc-form-border-radius: var(--bloglo-normal-radius);
+}
+
+.woocommerce form .form-row .input-text:focus,
+.woocommerce form .form-row select:focus {
+  border-color: var(--wc-form-border-color);
+  border-bottom-color: var(--bloglo-primary);
+}
+
+/* Select2: remove WooCommerce vertical padding that pushes the text down. */
+.woocommerce .select2-container .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Checkout order review: keep prices and the column heading on one line. */
+.woocommerce .woocommerce-checkout-review-order table.shop_table .product-total,
+.woocommerce .woocommerce-checkout-review-order table.shop_table .cart-subtotal td,
+.woocommerce .woocommerce-checkout-review-order table.shop_table .order-total td,
+.woocommerce .woocommerce-checkout-review-order table.shop_table .tax-total td,
+.woocommerce .woocommerce-checkout-review-order table.shop_table .fee td {
+  white-space: nowrap;
+}
+
+/* Buttons inside page content should not inherit the content link underline. */
+.content-area .bloglo-entry .woocommerce a.bloglo-btn,
+.content-area .bloglo-entry .woocommerce a.button {
+  text-decoration: none;
+}
+
+/* Single product: space between add to cart and buttons added after it (wishlist, etc.). */
+.woocommerce div.product form.cart .single_add_to_cart_button ~ .button {
+  margin-inline-start: 1rem;
+}
+
+/* Single product meta: wrapped values align with the first value, not the label. */
+.woocommerce div.product .product_meta > span {
+  padding-inline-start: calc(11rem + 0.25em);
+  text-indent: calc(-11rem - 0.25em);
+}
+
+.woocommerce div.product .product_meta .bloglo-woo-meta-title {
+  text-indent: 0;
+}
+
+/* Responsive cart: stacked cells share the same edges, no boxed first/last cell. */
+@media screen and (max-width: 768px) {
+  .woocommerce #yith-wcwl-form table.shop_table td:first-child,
+  .woocommerce #yith-wcwl-form table.shop_table td:last-child,
+  .woocommerce .woocommerce-cart-form table.shop_table td:first-child,
+  .woocommerce .woocommerce-cart-form table.shop_table td:last-child {
+    padding-left: 0;
+    padding-right: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+}
